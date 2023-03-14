@@ -55,7 +55,7 @@
         "wayou.vscode-todo-highlight",
         "ms-python.python",
         "VisualStudioExptTeam.vscodeintellicode",
-        "ms-python.black-formatter",
+        "ms-python.autopep8",
         "ms-iot.vscode-ros",
         "smilerobotics.urdf",
         "yzhang.markdown-all-in-one"

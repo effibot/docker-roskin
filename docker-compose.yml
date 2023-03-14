@@ -44,7 +44,7 @@ services:
       - ./config/zsh_history:/home/${USER_NAME}/zsh_history
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - ../:/home/${USER_NAME}/workspace/
+      - ./:/home/${USER_NAME}/workspace/
   # Development target for nvidia support
   cuda-ros:
     env_file:
@@ -85,7 +85,7 @@ services:
       - ./config/zsh_history:/home/${USER_NAME}/zsh_history
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - ../:/home/${USER_NAME}/workspace/
+      - ./:/home/${USER_NAME}/workspace/
     deploy:
       resources:
         reservations:
