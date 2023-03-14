@@ -1,0 +1,94 @@
+version: "3.9"
+
+services:
+  # Development target for mesa support
+  mesa-ros:
+    env_file:
+      - .env
+    environment:
+      - USER_NAME
+      - USER_ID
+      - USER_GID
+      - CONTAINER_NAME
+      - IMAGE_NAME
+      - HOME_DIR
+      - DEFAULT_TERM
+      - DEFAULT_SHELL
+      - DISPLAY
+      - XAUTHORITY
+      - XSOCK
+    image: "${IMAGE_NAME}:mesa-ros"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.mesa
+      network: host
+    network_mode: host
+    container_name: "${CONTAINER_NAME}-mesa-ros"
+    privileged: true
+    cap_add:
+      - SYS_PTRACE
+    user: ${USER_NAME}
+    stdin_open: false
+    tty: true
+    command: ["/bin/bash", "-c", "trap 'exit 0' TERM; sleep infinity & wait"]
+    volumes:
+      - /dev/:/dev/
+      - /sys:/sys
+      - ~/.ssh:/home/${USER_NAME}/.ssh:ro
+      - /tmp/.X11-unix:${XSOCK}:rw
+      - /tmp/.docker.xauth:${XAUTHORITY}:rw
+      - ./config/.bashrc:/home/${USER_NAME}/.bashrc
+      - ./config/.aliases.sh:/home/${USER_NAME}/.aliases.sh
+      - ./config/.nanorc:/home/${USER_NAME}/.nanorc
+      - ./config/.p10k.zsh:/home/${USER_NAME}/.p10k.zsh
+      - ./config/zsh_history:/home/${USER_NAME}/zsh_history
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  # Development target for nvidia support
+  cuda-ros:
+    env_file:
+      - .env
+    environment:
+      - USER_NAME
+      - USER_ID
+      - USER_GID
+      - CONTAINER_NAME
+      - IMAGE_NAME
+      - HOME_DIR
+      - DEFAULT_TERM
+      - DEFAULT_SHELL
+      - DISPLAY
+      - QT_X11_NO_MITSHM
+    image: "${IMAGE_NAME}:cuda-ros"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.nvidia
+      network: host
+    network_mode: host
+    container_name: "${CONTAINER_NAME}-ros"
+    privileged: true
+    user: ${USER_NAME}
+    stdin_open: false
+    tty: true
+    command: ["/bin/bash", "-c", "trap 'exit 0' TERM; sleep infinity & wait"]
+    volumes:
+      - /dev/:/dev/
+      - /sys:/sys
+      - ~/.ssh:/home/${USER_NAME}/.ssh:ro
+      - /tmp/.X11-unix:${XSOCK}:rw
+      - /tmp/.docker.xauth:${XAUTHORITY}:rw
+      - ./config/.bashrc:/home/${USER_NAME}/.bashrc
+      - ./config/.aliases.sh:/home/dock/.aliases.sh
+      - ./config/.nanorc:/home/${USER_NAME}/.nanorc
+      - ./config/.p10k.zsh:/home/${USER_NAME}/.p10k.zsh
+      - ./config/zsh_history:/home/${USER_NAME}/zsh_history
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1
