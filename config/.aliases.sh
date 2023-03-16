@@ -11,3 +11,5 @@ alias lt="ls --tree --depth=1 "
 alias clc='clear'
 alias mambas='mamba env list'
 alias mambau='mamba update --all'
+alias mambac='mamba clean --all'
+alias nao='mamba activate nao'

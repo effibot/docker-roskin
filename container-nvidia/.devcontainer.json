@@ -19,11 +19,11 @@
         "editor.autoIndent": "advanced",
         "editor.defaultFormatter": null,
         "editor.wordWrap": "on",
-        "python.pythonPath": "/home/dock/conda/bin/python",
-        "python.linting.pylintEnabled": true,
-        "python.linting.enabled": true,
+        "python.pythonPath": "/home/dock/conda/envs/nao/bin/python",
+        "python.linting.pylintEnabled": false,
+        "python.linting.enabled": false,
         "python.condaPath": "/home/dock/conda/bin/conda",
-        "python.defaultInterpreterPath": "/home/dock/conda/bin/python",
+        "python.defaultInterpreterPath": "/home/dock/conda/envs/nao/bin/python",
         "python.analysis.inlayHints.pytestParameters": true,
         "[python]": {
           "editor.formatOnSave": true,
@@ -58,7 +58,8 @@
         "ms-python.autopep8",
         "ms-iot.vscode-ros",
         "smilerobotics.urdf",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "mintlify.document"
       ]
     }
   },

@@ -58,7 +58,8 @@
         "ms-python.autopep8",
         "ms-iot.vscode-ros",
         "smilerobotics.urdf",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "mintlify.document"
       ]
     }
   },

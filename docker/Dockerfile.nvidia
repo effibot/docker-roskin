@@ -3,17 +3,17 @@ FROM effibot/xenial:cuda-base
 # and home directory /home/dock
 
 # Create a python2.7 virtual environment for NAOqi
-RUN mamba create -n nao python=2.7 -y && \
-    mamba init zsh && mamba init bash
-
-RUN mamba install -n nao -y \
-    autopep8 bandit matplotlib\
-    numpy opencv scipy pylint && \
-    mamba update --all -y && mamba clean --all --yes && \
-    echo "mamba activate nao" >> ~/.zshrc && \
-    echo "mamba activate nao" >> ~/.bashrc && \
-    echo "alias nao='mamba activate nao'" >> ~/.aliases.sh && \
-    echo "alias base='mamba activate base'" >> ~/.aliases.sh
+#RUN mamba create -n nao python=2.7 -y && \
+#    mamba init zsh && mamba init bash
+#
+#RUN mamba install -n nao -y \
+#    autopep8 bandit matplotlib\
+#    numpy opencv scipy pylint && \
+#    mamba update --all -y && mamba clean --all --yes && \
+#    echo "mamba activate nao" >> ~/.zshrc && \
+#    echo "mamba activate nao" >> ~/.bashrc && \
+#    echo "alias nao='mamba activate nao'" >> ~/.aliases.sh && \
+#    echo "alias base='mamba activate base'" >> ~/.aliases.sh
 
 # Add needed folder to environment variables
 ENV NAOQI=${HOME}/naoqi
@@ -49,9 +49,9 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-sel
     echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
 
 # add additional ROS-python packages then initialize rosdep
-RUN mamba install -n nao -y defusedxml rosdep rosinstall rosinstall_generator wstool catkin_tools && \
-    mamba update -n nao --all -y && mamba clean --all --yes && \
-    sudo rosdep init && rosdep update --include-eol-distros
+#RUN mamba install -n nao -y defusedxml rosdep rosinstall rosinstall_generator wstool catkin_tools && \
+#    mamba update -n nao --all -y && mamba clean --all --yes && \
+#    sudo rosdep init && rosdep update --include-eol-distros
 
 # Install NAOqi ROS dependencies
 ENV ROS_DISTRO=kinetic
