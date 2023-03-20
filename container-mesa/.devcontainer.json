@@ -9,21 +9,30 @@
   "customizations": {
     "vscode": {
       "settings": {
+        "terminal.integrated.defaultProfile.linux":"zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
             "path": "/bin/zsh",
             "args": ["-l"]
           }
         },
-        "terminal.integrated.fontF    amily": "MesloLGS NF",
+        "terminal.integrated.fontFamily": "MesloLGS NF",
         "editor.autoIndent": "advanced",
         "editor.defaultFormatter": null,
         "editor.wordWrap": "on",
-        "python.pythonPath": "/home/dock/conda/bin/python",
+        "cmake.configureOnOpen": false,
+        "python.pythonPath": "/home/dock/venvs/py27/bin/python",
+        "python.analysis.autoSearchPaths": true,
+        "python.analysis.diagnosticMode": "workspace",
+        "python.analysis.extraPaths": [
+              "/opt/ros/kinetic/lib/python2.7/dist-packages"
+            ],
+        "python.analysis.typeCheckingMode": "basic",
+        "python.analysis.useLibraryCodeForTypes": true,
+        "python.analysis.logLevel": "Trace",
         "python.linting.pylintEnabled": true,
         "python.linting.enabled": true,
-        "python.condaPath": "/home/dock/conda/bin/conda",
-        "python.defaultInterpreterPath": "/home/dock/conda/bin/python",
+        "python.defaultInterpreterPath": "/home/dock/venvs/py27/bin/python",
         "python.analysis.inlayHints.pytestParameters": true,
         "[python]": {
           "editor.formatOnSave": true,
@@ -40,26 +49,26 @@
         "gruntfuggly.todo-tree",
         "hediet.vscode-drawio",
         "kevinrose.vsc-python-indent",
+        "mintlify.document",
         "ms-azuretools.vscode-docker",
         "ms-ceintl.vscode-language-pack-it",
+        "ms-iot.vscode-ros",
+        "ms-python.autopep8",
         "ms-python.isort",
+        "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
         "ms-vscode.cpptools",
         "ms-vscode.cmake-tools",
-        "twxs.cmake",
         "njpwerner.autodocstring",
         "oderwat.indent-rainbow",
         "phplasma.csv-to-table",
         "shardulm94.trailing-spaces",
-        "wayou.vscode-todo-highlight",
-        "ms-python.python",
-        "VisualStudioExptTeam.vscodeintellicode",
-        "ms-python.autopep8",
-        "ms-iot.vscode-ros",
         "smilerobotics.urdf",
-        "yzhang.markdown-all-in-one",
-        "mintlify.document"
+        "twxs.cmake",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "wayou.vscode-todo-highlight",
+        "yzhang.markdown-all-in-one"
       ]
     }
   },
@@ -67,5 +76,6 @@
   // Start the VS Code instance in the container's workspace
   "workspaceFolder": "/home/dock/workspace",
   // Creates a sleeping process that VSC uses to stop the container
-  "overrideCommand": true
+  "overrideCommand": true,
+  "postStartCommand": "export ROS_DISTRO=kinetic && export PATH=/opt/ros/$ROS_DISTRO/bin:$PATH && [ -L ~/catkin_ws/src ] || ln -s /home/dock/workspace/src ~/catkin_ws/src"
 }

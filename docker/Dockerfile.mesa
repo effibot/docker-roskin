@@ -2,22 +2,13 @@ FROM effibot/xenial:mesa-base
 # default user is dock (non-root but with sudo privileges) with UID and GID 1000
 # and home directory /home/dock
 
-# Create a python2.7 virtual environment for NAOqi
-#RUN mamba create -n nao python=2.7 -y && \
-#    mamba init zsh && mamba init bash
-#
-#RUN mamba install -n nao -y \
-#    autopep8 bandit matplotlib\
-#    numpy opencv scipy pylint && \
-#    mamba update --all -y && mamba clean --all --yes && \
-#    echo "mamba activate nao" >> ~/.zshrc && \
-#    echo "mamba activate nao" >> ~/.bashrc 
-
 # Add needed folder to environment variables
 ENV NAOQI=${HOME}/naoqi
 ENV PYTHONPATH=${NAOQI}/pynaoqi/lib/python2.7/site-packages:${PYTHONPATH}
 ENV AL_DIR=${NAOQI}/naoqi-sdk
 ENV AL_DIR_SIM=${NAOQI}/naoqi-sdk
+ENV ROS_DISTRO=kinetic
+ENV ROS_PYTHON_VERSION=2.7
 
 # download and install NAOqi SDK
 RUN mkdir ${HOME}/naoqi && \
@@ -28,36 +19,39 @@ RUN mkdir ${HOME}/naoqi && \
     rm -rf /tmp/pynaoqi-python2.7-* && \
     rm -rf /tmp/naoqi-sdk-*
 
-# install packages for ROS-Kinetic and ROS-Pepper interface
+# install packages for ROS-Kinetic, ROS-Pepper interface and Gazebo plugins
 RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections &&\
     echo 'ros-pepper-meshes ros-pepper-meshes/accepted-ros-pepper-meshes boolean true' | sudo debconf-set-selections &&\
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list' && \
+    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' &&\
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add - && \
-    sudo apt-get update && sudo apt install -y ros-kinetic-desktop-full build-essential \
-    ros-kinetic-move-base-msgs ros-kinetic-octomap ros-kinetic-octomap-msgs \
-    ros-kinetic-humanoid-msgs ros-kinetic-humanoid-nav-msgs \
+    wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -&&\
+    sudo apt-get update && sudo apt install -y gazebo7 libignition-math2-dev \
     ros-kinetic-camera-info-manager ros-kinetic-camera-info-manager-py \
-    ros-kinetic-rosbridge-suite ros-kinetic-rosbridge-server ros-kinetic-rosbridge-library \
-    ros-kinetic-rosbridge-msgs ros-kinetic-pepper-bringup ros-kinetic-pepper-dcm-bringup \
-    ros-kinetic-pepper-description ros-kinetic-pepper-gazebo-plugin \
-    ros-kinetic-pepper-moveit-config ros-kinetic-pepper-robot \
-    ros-kinetic-pepper-meshes && \
-    sudo apt autoremove -y && sudo apt clean -y && \
+    ros-kinetic-controller-manager ros-kinetic-ddynamic-reconfigure-python \
+    ros-kinetic-desktop-full ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros \
+    ros-kinetic-gazebo-ros-control ros-kinetic-humanoid-msgs ros-kinetic-humanoid-nav-msgs \
+    ros-kinetic-joint-state-publisher-gui ros-kinetic-move-base-msgs \
+    ros-kinetic-octomap ros-kinetic-octomap-msgs ros-kinetic-pepper-bringup \
+    ros-kinetic-pepper-description ros-kinetic-pepper-dcm-bringup ros-kinetic-pepper-gazebo-plugin \
+    ros-kinetic-pepper-meshes ros-kinetic-pepper-moveit-config ros-kinetic-pepper-robot \
+    ros-kinetic-ros-controllers ros-kinetic-ros-control ros-kinetic-rosbridge-library \
+    ros-kinetic-rosbridge-msgs ros-kinetic-rosbridge-server &&\
+    sudo apt full-upgrade && sudo apt autoremove -y && sudo apt clean -y && \
     sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*/apt/lists/* && \
     echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
 
 # add additional ROS-python packages then initialize rosdep
-#RUN mamba install -n nao -y defusedxml rosdep rosinstall rosinstall_generator wstool catkin_tools && \
-#    mamba update -n nao --all -y && mamba clean --all --yes && \
-#    sudo rosdep init && rosdep update --include-eol-distros
-
-# Install NAOqi ROS dependencies
-ENV ROS_DISTRO=kinetic
-ENV ROS_PYTHON_VERSION=2.7
+RUN cd ${VENVS}/py27/bin && ./python -m pip install defusedxml rosdep rosinstall \
+    rosinstall_generator wstool catkin_tools && \
+    sudo rosdep init && rosdep update --include-eol-distros
 
 # Install NAOqi ROS driver
 RUN mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src && \
-    git clone https://github.com/ros-naoqi/naoqi_driver.git && \
+    git clone https://github.com/ros-naoqi/naoqi_driver.git &&\
+    git clone -b correct_chain_model_and_gazebo_enabled https://github.com/awesomebytes/pepper_robot &&\
+    git clone -b simulation_that_works https://github.com/awesomebytes/pepper_virtual &&\
+    git clone https://github.com/awesomebytes/gazebo_model_velocity_plugin && \
     cd ~/catkin_ws/src && rosdep install -i -y --from-paths ./naoqi_driver && \
     . /opt/ros/kinetic/setup.sh && \
     cd ~/catkin_ws && catkin_make
