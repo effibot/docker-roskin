@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/dock/venvs/py27/bin/python
 from __future__ import print_function
 import rospy
 from sensor_msgs.msg import Image
@@ -40,4 +40,4 @@ def main(args):
 
 if __name__ == '__main__':
     main(sys.argv)
- 
+

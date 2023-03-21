@@ -10,6 +10,7 @@ ENV AL_DIR=${NAOQI}/naoqi-sdk
 ENV AL_DIR_SIM=${NAOQI}/naoqi-sdk
 ENV ROS_DISTRO=kinetic
 ENV ROS_PYTHON_VERSION=2.7
+ENV PATH=/opt/ros/${ROS_DISTRO}/bin:$PATH
 
 # download and install NAOqi SDK
 RUN mkdir ${HOME}/naoqi && \
@@ -37,7 +38,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-sel
     ros-kinetic-pepper-description ros-kinetic-pepper-dcm-bringup ros-kinetic-pepper-gazebo-plugin \
     ros-kinetic-pepper-meshes ros-kinetic-pepper-moveit-config ros-kinetic-pepper-robot \
     ros-kinetic-ros-controllers ros-kinetic-ros-control ros-kinetic-rosbridge-library \
-    ros-kinetic-rosbridge-msgs ros-kinetic-rosbridge-server &&\
+    ros-kinetic-rosbridge-msgs ros-kinetic-rosbridge-server ros-kinetic-tf2-sensor-msgs &&\
     sudo apt full-upgrade && sudo apt autoremove -y && sudo apt clean -y && \
     sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*/apt/lists/* && \
     echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
@@ -55,4 +56,6 @@ RUN mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src && \
     git clone https://github.com/awesomebytes/gazebo_model_velocity_plugin && \
     cd ~/catkin_ws/src && rosdep install -i -y --from-paths ./naoqi_driver && \
     . /opt/ros/kinetic/setup.sh && \
-    cd ~/catkin_ws && catkin_make
+    cd ~/catkin_ws && catkin_make && \
+    echo "source ~/catkin_ws/devel/setup.zsh" >> ~/.zshrc && \
+    mkdir -p ${HOME}/workspace/src && ln -s ${HOME}/workspace/src ~/catkin_ws/src

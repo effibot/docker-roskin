@@ -1,7 +1,20 @@
 {
-  "name": "Python: Current File",
-  "type": "python",
-  "request": "launch",
-  "program": "${file}",
-  "console": "integratedTerminal"
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ROS: Attach",
+      "type": "ros",
+      "request": "attach"
+    },
+    {
+      "name": "Python: file corrente",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ],
+  "compounds": []
 }
+// see also https://github.com/ms-iot/vscode-ros/blob/master/doc/debug-support.md

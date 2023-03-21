@@ -68,7 +68,7 @@ services:
       dockerfile: ./docker/Dockerfile.nvidia
       network: host
     network_mode: host
-    container_name: "${CONTAINER_NAME}-ros"
+    container_name: "${CONTAINER_NAME}-cuda-ros"
     privileged: true
     user: ${USER_NAME}
     stdin_open: false

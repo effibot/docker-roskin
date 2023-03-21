@@ -9,7 +9,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux":"zsh",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "zsh": {
             "path": "/bin/zsh",
@@ -22,11 +22,13 @@
         "editor.wordWrap": "on",
         "cmake.configureOnOpen": false,
         "python.pythonPath": "/home/dock/venvs/py27/bin/python",
+        "python.venvFolders": ["/home/dock/venvs/py27/bin/python"],
         "python.analysis.autoSearchPaths": true,
         "python.analysis.diagnosticMode": "workspace",
         "python.analysis.extraPaths": [
-              "/opt/ros/kinetic/lib/python2.7/dist-packages"
-            ],
+          "/opt/ros/kinetic/lib/python2.7/dist-packages"
+        ],
+        "python.linting.pylintPath": "/home/dock/.local/lib/python2.7/site-packages/pylint",
         "python.analysis.typeCheckingMode": "basic",
         "python.analysis.useLibraryCodeForTypes": true,
         "python.analysis.logLevel": "Trace",
@@ -39,15 +41,18 @@
           "editor.formatOnPaste": true
         },
         "python.formatting.provider": "autopep8",
-        "python.terminal.activateEnvironment": false
+        "python.formatting.autopep8Path": "/home/dock/.local/bin/autopep8",
+        "python.isort.path": "/home/dock/.local/bin/isort",
+        "python.terminal.activateEnvironment": false,
+        "python.venvPath": "/home/dock/venvs/py27"
       },
       "extensions": [
+        "ms-python.python",
         "aaron-bond.better-comments",
         "donjayamanne.python-environment-manager",
         "github.copilot",
         "grapecity.gc-excelviewer",
         "gruntfuggly.todo-tree",
-        "hediet.vscode-drawio",
         "kevinrose.vsc-python-indent",
         "mintlify.document",
         "ms-azuretools.vscode-docker",
@@ -55,9 +60,7 @@
         "ms-iot.vscode-ros",
         "ms-python.autopep8",
         "ms-python.isort",
-        "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter",
         "ms-vscode.cpptools",
         "ms-vscode.cmake-tools",
         "njpwerner.autodocstring",
@@ -76,6 +79,5 @@
   // Start the VS Code instance in the container's workspace
   "workspaceFolder": "/home/dock/workspace",
   // Creates a sleeping process that VSC uses to stop the container
-  "overrideCommand": true,
-  "postStartCommand": "export ROS_DISTRO=kinetic && export PATH=/opt/ros/$ROS_DISTRO/bin:$PATH && [ -L ~/catkin_ws/src ] || ln -s /home/dock/workspace/src ~/catkin_ws/src"
+  "overrideCommand": true
 }
