@@ -28,9 +28,6 @@
         "editor.wordWrap": "on",
         "cmake.configureOnOpen": false,
         "python.pythonPath": "/home/dock/venvs/py27/bin/python",
-        "python.venvFolders": [
-          "/home/dock/venvs/py27/bin/python"
-        ],
         "python.analysis.autoSearchPaths": true,
         "python.analysis.diagnosticMode": "workspace",
         "python.analysis.extraPaths": [
@@ -46,13 +43,19 @@
         "python.analysis.inlayHints.pytestParameters": true,
         "[python]": {
           "editor.formatOnSave": true,
-          "editor.formatOnPaste": true
+          "editor.formatOnPaste": true,
+          "editor.defaultFormatter": "ms-python.autopep8"
         },
-        "python.formatting.provider": "autopep8",
+        "python.formatting.provider": "none",
         "python.formatting.autopep8Path": "/home/dock/.local/bin/autopep8",
+        "python.formatting.autopep8Args": [
+          "--max-line-length",
+          "70",
+          "--aggressive"
+        ],
         "python.isort.path": "/home/dock/.local/bin/isort",
         "python.terminal.activateEnvironment": false,
-        "python.venvPath": "/home/dock/venvs/py27"
+        "python.venvPath": "/home/dock/venvs/"
       },
       "extensions": [
         "ms-python.python",
@@ -70,7 +73,6 @@
         "ms-python.isort",
         "ms-python.vscode-pylance",
         "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
         "njpwerner.autodocstring",
         "oderwat.indent-rainbow",
         "phplasma.csv-to-table",

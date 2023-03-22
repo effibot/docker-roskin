@@ -7,6 +7,7 @@ import cv2
 from cv_bridge import CvBridge, CvBridgeError
 from std_msgs.msg import String
 
+
 class imagelistener:
     """
     It creates a subscriber to the topic /pepper/camera/front/image_raw, which is the topic that
@@ -14,9 +15,10 @@ class imagelistener:
     image_sub = rospy.Subscriber("/pepper/camera/front/image_raw", Image, self.callback). The first
     argument is the topic name, the second is the type of message that is published on the topic, and
     the third is the callback function that is called when a message is received
-    
+
     :param args: This is a list of command line arguments
     """
+
     def __init__(self):
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber(
