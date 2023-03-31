@@ -25,23 +25,24 @@ class OdomNode(object):
             self.pos_y = data.pose.pose.position.y
             self.orien_z = data.pose.pose.orientation.z
             self.dt_seconds = data.header.stamp
+            print(self.dt_seconds)
 
         else:
-            dt = (data.header.stamp - self.dt_seconds)
+            dt = data.header.stamp - self.dt_seconds
             dx = data.pose.pose.position.x - self.pos_x
             dy = data.pose.pose.position.y - self.pos_y
-            dxy_mm = (dx**2 + dy**2)**0.5 * 1000
+            dxy_mm = [dx*1e3, dy*1e3]
             dtheta_rad = data.pose.pose.orientation.z - self.orien_z
             dtheta_degrees = dtheta_rad * 180 / math.pi
             print("dxy_mm:", dxy_mm)
             print("dtheta_degrees:", dtheta_degrees)
-            print("dt_seconds:", self.dt_seconds)
+            print("dt_seconds:", dt.to_sec())
 
             self.dt_seconds = data.header.stamp
             self.pos_x = data.pose.pose.position.x
             self.pos_y = data.pose.pose.position.y
             self.orien_z = data.pose.pose.orientation.z
-            self.publish([dxy_mm, dtheta_degrees, dt])
+            self.publish([dxy_mm, dtheta_degrees, dt.to_sec()])
 
     def publish(self, data):
         msg = Float32MultiArray()
@@ -50,7 +51,7 @@ class OdomNode(object):
 
     def run(self):
         rospy.init_node('odometry_node')
-        rospy.Subscriber('/pepper/odom', Odometry,
+        rospy.Subscriber('/odom', Odometry,
                          callback=self.odometry_callback)
         rospy.spin()
 

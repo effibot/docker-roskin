@@ -16,51 +16,47 @@ import numpy as np
 import struct
 import yaml
 from std_msgs.msg import Float32MultiArray
+from message_filters import ApproximateTimeSynchronizer, Subscriber
+import matplotlib.pyplot as plt
 
-
-MAP_SIZE_PIXELS = 500
-MAP_SIZE_METERS = 5
+MAP_SIZE_PIXELS = 800
+MAP_SIZE_METERS = 8
 
 
 class SLAMNode(object):
     def __init__(self):
         print("OK")
-        self.laser = Laser(45, 10, 120, 5600, 0, 0)
+        self.laser = Laser(45, 6.66, 240, 5600, 0, 20)
         self.slam = RMHC_SLAM(self.laser, MAP_SIZE_PIXELS, MAP_SIZE_METERS)
         self.pose_change = [0, 0, 0]
         self.pose_pub = None
         self.map_pub = None
+        self.mapbytes = bytearray(MAP_SIZE_PIXELS * MAP_SIZE_PIXELS)
 
     def display_map(self):
         # display slam map in opencv window
-        mapbytes = bytearray(MAP_SIZE_PIXELS * MAP_SIZE_PIXELS)
-        self.slam.getmap(mapbytes)
-        img = Image.frombytes(
-            'L', (MAP_SIZE_PIXELS, MAP_SIZE_PIXELS), bytes(mapbytes))
-        img = np.array(img)
-        cv2.imshow('SLAM', img)
+        self.slam.getmap(self.mapbytes)
+        # img = Image.frombytes(
+        #    'L', (MAP_SIZE_PIXELS, MAP_SIZE_PIXELS), bytes(self.mapbytes))
+        # img = np.array(img)
+        cv2.imshow('SLAM', np.array(Image.frombytes(
+            'L', (MAP_SIZE_PIXELS, MAP_SIZE_PIXELS), bytes(self.mapbytes))))
         cv2.waitKey(1)
 
-    def scan_callback(self, data):
-        self.slam.update(
-            list(data.data), scan_angles_degrees=list(np.linspace(-120, 120, 45)))
+    def slam_callback(self, scan, odom):
+        self.slam.update(list(scan.data), pose_change=odom.data,
+                         scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
         self.display_map()
-
-    def odom_callback(self, data):
-        self.pose_change = data.data
-        self.slam.update(
-            self.pose_change[0], self.pose_change[1], self.pose_change[2])
 
     def run(self):
         rospy.init_node('slam_node')
-        rospy.Subscriber('/lidar_array',
-                         Float32MultiArray, self.scan_callback)
-        rospy.Subscriber("odom_derivatives",
-                         Float32MultiArray, self.odom_callback)
-        # self.pose_pub = rospy.Publisher(
-        #    '/slam/pose', PoseStamped, queue_size=10)
-        # self.map_pub = rospy.Publisher(
-        #    '/slam/map', OccupancyGrid, queue_size=10)
+        lidar_sub = Subscriber('/lidar_array',
+                               Float32MultiArray)
+        odom_sub = Subscriber("/odom_derivatives",
+                              Float32MultiArray)
+        ats = ApproximateTimeSynchronizer(
+            [lidar_sub, odom_sub], queue_size=1, slop=0.1, allow_headerless=True)
+        ats.registerCallback(self.slam_callback)
         rospy.spin()
 
 
