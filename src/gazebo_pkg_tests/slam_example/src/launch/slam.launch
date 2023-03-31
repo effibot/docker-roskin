@@ -1,0 +1,6 @@
+<launch>
+
+    <node pkg="slam_example" type="scanLaser.py" name="pepper_lidar"/>
+    <node pkg="slam_example" type="poseOdometry.py" name="pepper_odom_derivative"/>
+    <!-- U <node pkg="slam_example" type="slam_node.py" name="pepper_lidar2"/> -->
+</launch>
