@@ -37,7 +37,7 @@ class Pepper_Lidar(Laser):
     def publish(self):
         msg = Float32MultiArray()
         msg.data = self.laser_array
-        print("Message", self.laser_array)
+        print("Message", len(self.laser_array))
         self.publisher.publish(msg)
 
 

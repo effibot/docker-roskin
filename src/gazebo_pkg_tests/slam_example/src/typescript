@@ -1,292 +1,460 @@
-Script started on Mon 27 Mar 2023 12:03:13 PM CEST
+Script started on Tue 04 Apr 2023 10:54:44 AM CEST
 bash: __git_ps1: command not found
-]0;dock@reds-HP-Laptop: ~/workspace/src/gazebo_pkg_tests/slam_example/src[01;91mdock@reds-HP-Laptop[00m [01;94msrc[01;33m [00m $ zsh
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src]1;..m_example/src[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   src[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mscript[39m[4m[35ms[4m[35mc[4m[35mr[4m[35mi[4m[35mp[4m[35mt[4m[35ms[24m[39m[?1l>[?2004l
-]2;scripts]1;scripts[0m[01;32mslam_node.py[0m
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[1m[31mscripts[0m[39m[0m[32ms[0m[32mc[0m[32mr[0m[32mi[0m[32mp[0m[32mt[39m[0m[39m [1m[31ms[1m[31mr[1m[31mc[0m[39m[39m [39m [39m [1m[31ms[1m[31ml[1m[31ma[1m[31mm_example[0m[39m[12D[1m[31mg[1m[31ma[1m[31mz[1m[31me[1m[31mb[1m[31mo[1m[31m_[1m[31mp[1m[31mk[1m[31mg[1m[31m_[1m[31mt[1m[31mests[0m[39m[16D[1m[31ms[1m[31ml[1m[31ma[1m[31mm[1m[31m_[1m[31me[1m[31mx[1m[31ma[1m[31mm[1m[31mp[1m[31ml[1m[31me[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [12D[1m[31ms[1m[31mr[1m[31mc[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [9D[0m[32ms[0m[32mc[0m[32mr[32mipt[39m[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[1m[31ms[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [32mp[39m[32mp[39m[90mython -m pdb slam_node.py[39m[25D[1m[31mp[1m[31my[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [24D[90mthon -m pdb slam_node.py[39m[24D[0m[32mp[0m[32my[32mt[32mh[32mo[32mn[39m[39m [36m-[36mm[39m[39m [39mp[39md[39mb[39m [35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m[?1l>[?2004l
-]2;python -m pdb slam_node.py]1;python> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(3)<module>()
--> from breezyslam.sensors import Laser
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(4)<module>()
--> import rospy
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(5)<module>()
--> from sensor_msgs.msg import LaserScan
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(6)<module>()
--> from geometry_msgs.msg import PoseStamped
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(7)<module>()
--> from nav_msgs.msg import OccupancyGrid
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(8)<module>()
--> from breezyslam.algorithms import RMHC_SLAM
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(9)<module>()
--> import cv2
-(Pdb) n
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(12)<module>()
--> class SLAMNode(object):
-(Pdb) b 16
-Breakpoint 1 at /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py:16
-(Pdb) c
-OK
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(16)__init__()
--> self.slam = RMHC_SLAM(self.laser, 10, 5)
-(Pdb) s
---Call--
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(222)__init__()
--> def __init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(241)__init__()
--> SinglePositionSLAM.__init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(242)__init__()
--> map_quality, hole_width_mm)
-(Pdb) r
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mpython[39m [36m-m[39m pdb [35mslam_node.py[39m [K[K[?1l>[?2004l
-]2;python -m pdb slam_node.py]1;python> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(3)<module>()
--> from breezyslam.sensors import Laser
-(Pdb) c
-OK
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mpython[39m [36m-m[39m pdb [35mslam_node.py[39m [K[K[A[68C[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[1m[31ms[0m[39m[K[1B[K[A[75C[0m[32ms[0m[32mc[0m[32mr[0m[32mi[0m[32mp[0m[32mt[39m[0m[39m [1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[1m[31ms[0m[39m[0m[32mp[0m[32my[0m[32mt[0m[32mh[0m[32mo[0m[32mn[39m[0m[39m [36m-m[39m pdb [35mslam_node.py[39m [K[K[A[68C[K[1B[K[A[68C[32mpython[39m [36m-m[39m pdb [35mslam_node.py[39m [K[K[?1l>[?2004l
-]2;python -m pdb slam_node.py]1;python> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(3)<module>()
--> from breezyslam.sensors import Laser
-(Pdb) b 16
-Breakpoint 1 at /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py:16
-(Pdb) c
-OK
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(16)__init__()
--> self.slam = RMHC_SLAM(self.laser, 10, 5)
-(Pdb) s
---Call--
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(222)__init__()
--> def __init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(241)__init__()
--> SinglePositionSLAM.__init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(242)__init__()
--> map_quality, hole_width_mm)
-(Pdb) n
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mpython[39m [36m-m[39m pdb [35mslam_node.py[39m [K[K[?1l>[?2004l
-]2;python -m pdb slam_node.py]1;python> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(3)<module>()
--> from breezyslam.sensors import Laser
-(Pdb) b 16
-Breakpoint 1 at /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py:16
-(Pdb) c
-OK
-> /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py(16)__init__()
--> self.slam = RMHC_SLAM(self.laser, 10, 5)
-(Pdb) s
---Call--
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(222)__init__()
--> def __init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) l
-217  	    '''
-218  	    RMHC_SLAM implements the _getNewPosition() method of SinglePositionSLAM using Random-Mutation Hill-Climbing
-219  	    search.  Uses its own internal pseudorandom-number generator for efficiency.
-220  	    '''
-221  	    
-222  ->	    def __init__(self, laser, map_size_pixels, map_size_meters, 
-223  	                map_quality=_DEFAULT_MAP_QUALITY, hole_width_mm=_DEFAULT_HOLE_WIDTH_MM,
-224  	                random_seed=None, sigma_xy_mm=_DEFAULT_SIGMA_XY_MM, sigma_theta_degrees=_DEFAULT_SIGMA_THETA_DEGREES, 
-225  	                max_search_iter=_DEFAULT_MAX_SEARCH_ITER):
-226  	        '''
-227  	        Creates a RMHCSlam object suitable for updating with new Lidar and odometry data.
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(241)__init__()
--> SinglePositionSLAM.__init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) l
-236  	        sigma_theta_degrees specifies the standard deviation in degrees of the normal distribution of 
-237  	           the rotational component of position for RMHC search
-238  	        max_search_iter specifies the maximum number of iterations for RMHC search
-239  	        '''
-240  	    
-241  ->	        SinglePositionSLAM.__init__(self, laser, map_size_pixels, map_size_meters, 
-242  	            map_quality, hole_width_mm)
-243  	            
-244  	        if not random_seed:
-245  	            random_seed = int(time.time()) & 0xFFFF
-246  	            
-(Pdb) s
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(242)__init__()
--> map_quality, hole_width_mm)
-(Pdb) l
-237  	           the rotational component of position for RMHC search
-238  	        max_search_iter specifies the maximum number of iterations for RMHC search
-239  	        '''
-240  	    
-241  	        SinglePositionSLAM.__init__(self, laser, map_size_pixels, map_size_meters, 
-242  ->	            map_quality, hole_width_mm)
-243  	            
-244  	        if not random_seed:
-245  	            random_seed = int(time.time()) & 0xFFFF
-246  	            
-247  	        self.randomizer = pybreezyslam.Randomizer(random_seed)
-(Pdb) s
---Call--
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(155)__init__()
--> def __init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) 4[Kl
-150  	      _getNewPosition(self, start_position)
-151  	      
-152  	    to compute a new position based on searching from a starting position.
-153  	    '''
-154  	
-155  ->	    def __init__(self, laser, map_size_pixels, map_size_meters, 
-156  	                map_quality=_DEFAULT_MAP_QUALITY, hole_width_mm=_DEFAULT_HOLE_WIDTH_MM):
-157  	
-158  	        CoreSLAM.__init__(self, laser, map_size_pixels, map_size_meters, 
-159  	            map_quality, hole_width_mm)                    
-160  	                    
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(158)__init__()
--> CoreSLAM.__init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) l
-153  	    '''
-154  	
-155  	    def __init__(self, laser, map_size_pixels, map_size_meters, 
-156  	                map_quality=_DEFAULT_MAP_QUALITY, hole_width_mm=_DEFAULT_HOLE_WIDTH_MM):
-157  	
-158  ->	        CoreSLAM.__init__(self, laser, map_size_pixels, map_size_meters, 
-159  	            map_quality, hole_width_mm)                    
-160  	                    
-161  	        # Initialize the position (x, y, theta)
-162  	        init_coord_mm = 500 * map_size_meters # center of map
-163  	        self.position =  pybreezyslam.Position(init_coord_mm, init_coord_mm, 0)
-(Pdb) s
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(159)__init__()
--> map_quality, hole_width_mm)
-(Pdb) l
-154  	
-155  	    def __init__(self, laser, map_size_pixels, map_size_meters, 
-156  	                map_quality=_DEFAULT_MAP_QUALITY, hole_width_mm=_DEFAULT_HOLE_WIDTH_MM):
-157  	
-158  	        CoreSLAM.__init__(self, laser, map_size_pixels, map_size_meters, 
-159  ->	            map_quality, hole_width_mm)                    
-160  	                    
-161  	        # Initialize the position (x, y, theta)
-162  	        init_coord_mm = 500 * map_size_meters # center of map
-163  	        self.position =  pybreezyslam.Position(init_coord_mm, init_coord_mm, 0)
-164  	        
-(Pdb) s
---Call--
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(62)__init__()
--> def __init__(self, laser, map_size_pixels, map_size_meters,
-(Pdb) l
- 57  	      _updateMapAndPointcloud(scan_mm, dxy_mm, dtheta_degrees, should_update_map)
- 58  	    
- 59  	    to update the point-cloud (particle cloud) and map (if should_update_map true)
- 60  	    '''
- 61  	    
- 62  ->	    def __init__(self, laser, map_size_pixels, map_size_meters, 
- 63  	        map_quality=_DEFAULT_MAP_QUALITY, hole_width_mm=_DEFAULT_HOLE_WIDTH_MM):
- 64  	        '''
- 65  	        Creates a CoreSLAM object suitable for updating with new Lidar and odometry data.
- 66  	        laser is a Laser object representing the specifications of your Lidar unit
- 67  	        map_size_pixels is the size of the square map in pixels
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(74)__init__()
--> self.map_quality = map_quality
-(Pdb) m[Kn
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(75)__init__()
--> self.hole_width_mm = hole_width_mm
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(78)__init__()
--> self.laser = laser
-(Pdb) n
-> /usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py(81)__init__()
--> self.scan_for_distance = pybreezyslam.Scan(laser, 1)
-(Pdb) n
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mp[39m[32mp[39m[90mython -m pdb slam_node.py[39m [K[A[69C[1B[K[A[69C[1m[31mp[1m[31my[0m[39m[K[1B[K[A[70C[90mthon -m pdb slam_node.py[39m [K[A[70C[1B[K[A[70C[1m[31mp[1m[31my[1m[31mt[0m[39m[K[1B[K[A[71C[90mhon -m pdb slam_node.py[39m [K[A[71C[1B[K[A[71C[1m[31mt[1m[31mh[0m[39m[K[1B[K[A[72C[90mon -m pdb slam_node.py[39m [K[A[72C[1B[K[A[72C[1m[31mh[1m[31mo[0m[39m[K[1B[K[A[73C[90mn -m pdb slam_node.py[39m [K[A[73C[1B[K[A[73C[0m[32mp[0m[32my[0m[32mt[0m[32mh[0m[32mo[32mn[39m[K[1B[K[A[74C[90m -m pdb slam_node.py[39m [K[A[74C[1B[K[A[74C[K[1B[K[A[74C[?1l>[?2004l[1B]2;python]1;pythonPython 2.7.12 (default, Mar  1 2021, 11:38:31) 
-[GCC 5.4.0 20160609] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>> [0]*6,[K
-[0, 0, 0, 0, 0, 0]
->>> /home/dock/venvs/py27/bin/python /home/dock/workspace/src/gazebo_pkg_tests/slam_example/sr c/scripts/slam_node.py
-  File "<stdin>", line 1
-    /home/dock/venvs/py27/bin/python /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py
-    ^
-SyntaxError: invalid syntax
->>> 
-KeyboardInterrupt
->>> 
-KeyboardInterrupt
->>> 
-[1]  + 14638 suspended  python
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h//home/dock/venvs/py27/bin/ [K[Kppython /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py[A[18D[32m/[32mh[32mo[32mm[32me[32m/[32md[32mo[32mc[32mk[32m/[32mv[32me[32mn[32mv[32ms[32m/[32mp[32my[32m2[32m7[32m/[32mb[32mi[32mn[32m/[32mp[32my[32mt[32mh[32mo[32mn[39m [35m/[35mh[35mo[35mm[35me[35m/[35md[35mo[35mc[35mk[35m/[35mw[35mo[35mr[35mk[35ms[35mp[35ma[35mc[35me[35m/[35ms[35mr[35mc[35m/[35mg[35ma[35mz[35me[35mb[35mo[35m_[35mp[35mk[35mg[35m_[35mt[35me[35ms[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35me[35mx[35ma[35mm[35mp[35ml[35me[35m/[35ms[35mr[35mc[35m/[35ms[35mc[35mr[35mi[35mp[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m[?1l>[?2004l
-]2;/home/dock/venvs/py27/bin/python ]1;/home/dock/venvs/py27/bin/pythonOK
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h//home/dock/venvs/py27/bin/ [K[Kppython /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py[A[18D[32m/[32mh[32mo[32mm[32me[32m/[32md[32mo[32mc[32mk[32m/[32mv[32me[32mn[32mv[32ms[32m/[32mp[32my[32m2[32m7[32m/[32mb[32mi[32mn[32m/[32mp[32my[32mt[32mh[32mo[32mn[39m [35m/[35mh[35mo[35mm[35me[35m/[35md[35mo[35mc[35mk[35m/[35mw[35mo[35mr[35mk[35ms[35mp[35ma[35mc[35me[35m/[35ms[35mr[35mc[35m/[35mg[35ma[35mz[35me[35mb[35mo[35m_[35mp[35mk[35mg[35m_[35mt[35me[35ms[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35me[35mx[35ma[35mm[35mp[35ml[35me[35m/[35ms[35mr[35mc[35m/[35ms[35mc[35mr[35mi[35mp[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m[?1l>[?2004l
-]2;/home/dock/venvs/py27/bin/python ]1;/home/dock/venvs/py27/bin/pythonOK
-Unable to allocate 18446744073709551608 bytes
-[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h//home/dock/venvs/py27/bin/ [K[Kppython /home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py[A[18D[32m/[32mh[32mo[32mm[32me[32m/[32md[32mo[32mc[32mk[32m/[32mv[32me[32mn[32mv[32ms[32m/[32mp[32my[32m2[32m7[32m/[32mb[32mi[32mn[32m/[32mp[32my[32mt[32mh[32mo[32mn[39m [35m/[35mh[35mo[35mm[35me[35m/[35md[35mo[35mc[35mk[35m/[35mw[35mo[35mr[35mk[35ms[35mp[35ma[35mc[35me[35m/[35ms[35mr[35mc[35m/[35mg[35ma[35mz[35me[35mb[35mo[35m_[35mp[35mk[35mg[35m_[35mt[35me[35ms[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35me[35mx[35ma[35mm[35mp[35ml[35me[35m/[35ms[35mr[35mc[35m/[35ms[35mc[35mr[35mi[35mp[35mt[35ms[35m/[35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m[?1l>[?2004l
-]2;/home/dock/venvs/py27/bin/python ]1;/home/dock/venvs/py27/bin/pythonOK
-DIOCARIO
-Starting SLAM node...
-^C[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mr[39m[32mr[39m[90mosrun slam_example slam_node.[90mp[90my[39m[K[A[63C[1m[31mr[1m[31mo[0m[39m[K[1B[K[A[66C[90msrun slam_example slam_node.[90mp[90my[39m[K[A[64C[1m[31mr[1m[31mo[1m[31ms[0m[39m[K[1B[K[A[67C[90mrun slam_example slam_node.[90mp[90my[39m[K[A[65C[0m[32mr[0m[32mo[0m[32ms[32mr[32mu[32mn[39m[39m [39ms[39ml[39ma[39mm[39m_[39me[39mx[39ma[39mm[39mp[39ml[39me[39m [35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m[?1l>[?2004l
-]2;rosrun slam_example slam_node.py]1;rosrunOK
-DIOCARIO
-Starting SLAM node...
-^C[1m[7m%[27m[1m[0m                                                                                              ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosrun[39m slam_example [35mslam_node.[35mp[35my[39m[K[A[62C[32m/[32mh[32mo[32mm[32me[32m/[32md[32mo[32mc[32mk[32m/[32mv[32me[32mn[32mv[32ms[32m/[32mp[32my[32m2[32m7[32m/[32mb[32mi[32mn[32m/[32mp[32my[32mt[32mh[32mo[32mn[39m [35m/home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py[39m[A[18D[32mp[32my[32mt[32mh[32mo[32mn[39m[K[1B[K[A[70C [36m-m[39m pdb [35mslam_node.py[39m[26D[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[1m[31ms[0m[39m[39m [39m      [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [19D[0m[32ms[0m[32mc[0m[32mr[0m[32mi[0m[32mp[0m[32mt[39m[0m[39m [1m[31ms[1m[31mr[1m[31mc[0m[39m[39m [39m [39m [1m[31ms[1m[31ml[1m[31ma[1m[31mm_example[0m[39m[12D[1m[31mg[1m[31ma[1m[31mz[1m[31me[1m[31mb[1m[31mo[1m[31m_[1m[31mp[1m[31mk[1m[31mg[1m[31m_[1m[31mt[1m[31mests[0m[39m[16D[1m[31ms[1m[31mr[1m[31mc[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [13D[0m[32ml[0m[32ms[39m[0m[39m [1m[31ms[1m[31mr[1m[31mc[0m[39m[1m[31mg[1m[31ma[1m[31mz[1m[31mebo_pkg_tests[0m[39m[16D[1m[31ms[1m[31ml[1m[31ma[1m[31mm[1m[31m_[1m[31me[1m[31mx[1m[31ma[1m[31mm[1m[31mp[1m[31ml[1m[31me[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [12D[1m[31ms[1m[31mr[1m[31mc[0m[39m[0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [0m[39m [9D[0m[32ms[0m[32mc[0m[32mr[32mipt[39m[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[1m[31ms[0m[39m[0m[32mp[0m[32my[0m[32mt[0m[32mh[0m[32mo[0m[32mn[39m[0m[39m [36m-m[39m pdb [35mslam_node.py[39m[19D[39m [39m      [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [20D[32m/[32mh[32mo[32mm[32me[32m/[32mdock/venvs/py27/bin/pyth[32mo[32mn[39m [35m/home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/slam_node.py[39m[K[A[18D[32mr[32mo[32ms[32mr[32mu[32mn[39m[39m [39ms[39ml[39ma[39mm[39m_[39me[39mx[39ma[39mm[39mp[39ml[39me[39m [35ms[35ml[35ma[35mm[35m_[35mn[35mo[35md[35me[35m.[35mp[35my[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [80D[A[62C[K[1B[K[A[64C[32mr[39m[1m[31mr[1m[31mo[0m[39m[1m[31mr[1m[31mo[1m[31ms[0m[39m[1m[31ms[1m[31mr[0m[39m[1m[31mr[1m[31mu[0m[39m[0m[32mr[0m[32mo[0m[32ms[0m[32mr[0m[32mu[32mn[39m rviz rviz [36m-[39m[36m-[36md[39m `[1B-fast-highlight-process:603: scalar parameter FAST_THEME_NAME created globally in function
-[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[32mrosrun[39m rviz rviz [36m-d[39m `[Krospack f [K[Kiind pepper_gazebo_plugin`/config/pepper_sensors.rviz[A[12C[K[1B[K[A[64C[32mrosrun[39m rviz rviz [36m-d[39m `rospack find pepper_gazebo_plugin`/config/pepper_sensors.rviz[K[?1l>[?2004l
-]2;rosrun rviz rviz -d ]1;rosrun[0m[ INFO] [1679913347.612911261]: rviz version 1.12.17[0m
-[0m[ INFO] [1679913347.612984038]: compiled against Qt version 5.5.1[0m
-[0m[ INFO] [1679913347.613006285]: compiled against OGRE version 1.9.0 (Ghadamon)[0m
-libGL error: pci id for fd 18: 8086:8a52, driver (null)
+]0;dock@reds-HP-Laptop: ~/workspace/src/gazebo_pkg_tests/slam_example/src[01;91mdock@reds-HP-Laptop[00m [01;94msrc[01;33m [00m $ zsh
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src]1;..m_example/src[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   src[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32ml[39m[32ml[39m[90ms[39m[32ml[32ms[39m[?1l>[?2004l
+]2;lsd --group-dirs=first -S]1;ls[38;5;4m[1m launch[0m  [38;5;4m[1m scripts[0m   typescript
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src]1;..m_example/src[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   src[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mc[39m[32mc[39m[90md cmake[39m[32mc[32md[39m[39m [39m [39m [39m [39m [39m [90m cmake[39m[39m [39m [39m [39m [39m [39m [90mcmake[39m[39ms[39m [39m [39m [39m [90mervice[39m[39mc[39m [39m [39m [39m [39m r[4m[35ms[4m[35mc[4m[35mr[4m[35mipts/[0m[24m[39m[4m[35ms[24m[39m[24m[39m [?1l>[?2004l
+]2;cd scripts]1;cddepth_to_laser.py  example.py  [0m[01;32mlaser_pointcloud.py[0m  [01;32mposeOdometry.py[0m  [01;32mscanLaser.py[0m  [01;32mslam_node.py[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mc[39m[32mc[39m[90md scripts[39m[9D[1m[31mc[1m[31mh[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [8D[90mmod +x laser_pointcloud.py[39m[26D[0m[32mc[0m[32mh[32mm[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [25D[90mod +x laser_pointcloud.py[39m[25D[1m[31mc[1m[31mh[1m[31mm[1m[31mo[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [24D[90md +x laser_pointcloud.py[39m[24D[0m[32mc[0m[32mh[0m[32mm[0m[32mo[32md[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[90m +x laser_pointcloud.py[39m[23D[1m[31mc[1m[31mh[1m[31mm[1m[31mo[1m[31md[1m[31me[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [22D[0m[32mc[0m[32mh[0m[32mm[0m[32mo[0m[32md[39m[0m[39m [90m +x laser_pointcloud.py[39m[23D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [22D[90m+x laser_pointcloud.py[39m[22D[39m+[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [21D[90mx laser_pointcloud.py[39m[21D[39mx[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [20D[90m laser_pointcloud.py[39m[20D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [19D[90mlaser_pointcloud.py[39m[19D[39md[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [18Depth_to_laser.p[16D[35md[35me[35mp[35mt[35mh[35m_[35mt[35mo[35m_[35ml[35ma[35ms[35me[35mr[35m.[35mp[35my[39m[?1l>[?2004l
+]2;chmod +x depth_to_laser.py]1;chmod[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32ml[39m[32ml[39m[90ms[39m[32ml[32ms[39m[?1l>[?2004l
+]2;lsd --group-dirs=first -S]1;ls example.py  [38;5;2m[1m laser_pointcloud.py[0m  [38;5;2m[1m slam_node.py[0m  [38;5;2m[1m poseOdometry.py[0m  [38;5;2m[1m scanLaser.py[0m  [38;5;2m[1m depth_to_laser.py[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mr[39m[32mr[39m[90mostopic echo /scan[39m[18D[1m[31mr[1m[31mo[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [17D[90mstopic echo /scan[39m[17D[1m[31mr[1m[31mo[1m[31ms[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [16D[90mtopic echo /scan[39m[16D[1m[31ms[1m[31mr[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [15D[90mun rviz rviz [39m[13D[1m[31mr[1m[31mu[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [12D[90mn rviz rviz [39m[12D[0m[32mr[0m[32mo[0m[32ms[0m[32mr[0m[32mu[32mn[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [11D[90m rviz rviz [39m[11D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [10D[90mrviz rviz [39m[10D[39ms[39m [39m [39m [39m [39m [39m [39m [39m [39m [9D[90mlam_example laser_pointcloud.py[39m[31D[39ml[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [30D[90mam_example laser_pointcloud.py[39m[30D[39ma[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [29D[90mm_example laser_pointcloud.py[39m[29D[39mm[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [28D[90m_example laser_pointcloud.py[39m[28D[39m_[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [27D[90mexample laser_pointcloud.py[39m[27D[39me[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [26D[90mxample laser_pointcloud.py[39m[26D[39mx[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [25D[90mample laser_pointcloud.py[39m[25D[39ma[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [24D[90mmple laser_pointcloud.py[39m[24D[39mm[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[90mple laser_pointcloud.py[39m[23D[39mp[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [22D[90mle laser_pointcloud.py[39m[22D[39me[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [21D depth_to_[28D[39mr[39mo[39ms[39mr[39mu[39mn[22C[28D[32mr[32mo[32ms[32mr[32mu[32mn[39m[22Claser.p[16D[35md[35me[35mp[35mt[35mh[35m_[35mt[35mo[35m_[35ml[35ma[35ms[35me[35mr[35m.[35mp[35my[39m[?1l>[?2004l
+]2;rosrun slam_exampe depth_to_laser.py]1;rosrun[rospack] Error: package 'slam_exampe' not found
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosrun[39m slam_exampe [35mdepth_to_laser.py[39mle[39m [35md[35me[35mp[35mt[35mh[35m_[35mt[35mo[35m_[35ml[35ma[35ms[35me[35mr[35m.[35mp[35my[39m[19D[?1l>[?2004l
+]2;rosrun slam_example depth_to_laser.py]1;rosrunTraceback (most recent call last):
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 5, in <module>
+    from depth_to_laser import DepthImageToLaserScan
+  File "/home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 5, in <module>
+    from depth_to_laser import DepthImageToLaserScan
+ImportError: cannot import name DepthImageToLaserScan
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mr[39m[32mr[39m[90mosrun slam_example depth_to_laser.py[39m[36D[1m[31mr[1m[31mo[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [35D[90msrun slam_example depth_to_laser.py[39m[35D[1m[31mr[1m[31mo[1m[31ms[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [34D[90mrun slam_example depth_to_laser.py[39m[34D[0m[32mr[0m[32mo[0m[32ms[32md[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [33D[90m rqt_robot_steering rqt_robot_steering[39m[38D[1m[31mr[1m[31mo[1m[31ms[1m[31md[1m[31me[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [37D[90mp install slam_example[39m[22D[0m[32mr[0m[32mo[0m[32ms[0m[32md[0m[32me[32mp[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [21D[90m install slam_example[39m[21D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [20D[90minstall slam_example[39m[20D[39mi[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [19D[90mnstall slam_example[39m[19D[39mn[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [18D[90mstall slam_example[39m[18D[39ms[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [17D[90mtall slam_example[39m[17D[39mt[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [16D[90mall slam_example[39m[16D[39ma[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [15D[90mll slam_example[39m[15D[39ml[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[90ml slam_example[39m[14D[39ml[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [13D[90m slam_example[39m[13D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [12D[90mslam_example[39m[12D[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [12Dslam_example[?1l>[?2004l
+]2;rosdep install slam_example]1;rosdep#All required rosdeps installed successfully
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosdep[39m install slam_example[24D[32mr[32mu[32mn[39m[8P[13C [35mdepth_to_laser.py[39m[?1l>[?2004l
+]2;rosrun slam_example depth_to_laser.py]1;rosrunTraceback (most recent call last):
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 5, in <module>
+    from depth_to_laser import DepthImageToLaserScan
+  File "/home/dock/workspace/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 5, in <module>
+    from depth_to_laser import DepthImageToLaserScan
+ImportError: cannot import name DepthImageToLaserScan
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosrun[39m slam_example [35mdepth_to_laser.py[39m[?1l>[?2004l
+]2;rosrun slam_example depth_to_laser.py]1;rosrunlibGL error: pci id for fd 33: 8086:8a52, driver (null)
 libGL error: No driver found
 libGL error: failed to load driver: (null)
-libGL error: pci id for fd 18: 8086:8a52, driver (null)
+libGL error: pci id for fd 33: 8086:8a52, driver (null)
 libGL error: unable to load driver: iris_dri.so
 libGL error: driver pointer missing
 libGL error: failed to load driver: iris
-libGL error: pci id for fd 34: 8086:8a52, driver (null)
+^CUnhandled exception in thread started by 
+sys.excepthook is missing
+lost sys.stderr
+QObject::~QObject: Timers cannot be stopped from another thread
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[49m[33m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosrun[39m slam_example [35mdepth_to_laser.py[39m[?1l>[?2004l
+]2;rosrun slam_example depth_to_laser.py]1;rosrun320
+libGL error: pci id for fd 33: 8086:8a52, driver (null)
 libGL error: No driver found
 libGL error: failed to load driver: (null)
-libGL error: pci id for fd 34: 8086:8a52, driver (null)
+libGL error: pci id for fd 33: 8086:8a52, driver (null)
 libGL error: unable to load driver: iris_dri.so
 libGL error: driver pointer missing
 libGL error: failed to load driver: iris
-[0m[ INFO] [1679913348.115942853, 17.561000000]: Stereo is NOT SUPPORTED[0m
-[0m[ INFO] [1679913348.116132836, 17.561000000]: OpenGl version: 3 (GLSL 1.3).[0m
-0x11de390 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x14b5bd0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x1bc6520 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x15b2a50 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x1900ee0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x15529a0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x222ef70 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x1c68b50 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x1669820 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x11d23d0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x142c110 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x11d9fd0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x142c660 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-0x142d0e0 void QWindowPrivate::setTopLevelScreen(QScreen*, bool) ( QScreen(0x8a5330) ): Attempt to set a screen on a child window.
-[33m[ WARN] [1679913378.235335211, 41.602000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913459.083929082, 101.633000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913544.383643930, 161.712000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913637.775621549, 221.819000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913725.070456196, 281.859000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913811.961891482, 341.950000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913912.927484984, 402.016000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679913999.198182638, 462.035000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914084.879786502, 522.142000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914187.361036669, 582.185000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914290.063940855, 642.211000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914387.000292872, 702.315000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914499.478416287, 762.336000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914616.783053767, 822.357000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914734.817420120, 882.466000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914847.850211586, 942.467000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679914970.218263467, 1002.477000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679915085.579503529, 1062.562000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679915194.820714184, 1125.718000000]: MessageFilter [target=base_footprint ]: Dropped 100.00% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679915264.502678409, 1185.756000000]: MessageFilter [target=base_footprint ]: Dropped 99.95% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679915353.370140162, 1245.797000000]: MessageFilter [target=base_footprint ]: Dropped 99.95% of messages so far. Please turn the [ros.rviz.message_notifier] rosconsole logger to DEBUG for more information.[0m
-[33m[ WARN] [1679915439.360093463, 1305.850000000]: MessageFilter [tar
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+320
+^CQObject::~QObject: Timers cannot be stopped from another thread
+^C
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                            ]2;dock@reds-HP-Laptop:~/workspace/src/gazebo_pkg_tests/slam_example/src/scripts]1;..e/src/scripts[0m[27m[24m[J[0m[49m[39m[0m[49m[38;5;208m[0m[48;5;208m[37m  [0m[48;5;208m[37m [0m[40m[38;5;208m[0m[40m[33m dock[0m[40m[33m [0m[44m[30m[0m[44m[30m   scripts[0m[44m[30m [0m[48;5;28m[34m[0m[48;5;28m[38;5;220m   2.7.12 (py27)[0m[48;5;28m[38;5;220m [0m[43m[38;5;28m[0m[43m[30m   [0m[43m[30m main[0m[43m[30m[0m[43m[30m  [0m[43m[30m  [0m[43m[30m [0m[40m[33m[0m[40m[31m [0m[40m[31m [0m[49m[30m[0m[49m[39m [0m[49m[39m[K[?1h=[?2004h[32mrosrun[39m slam_example [35mdepth_to_laser.py[39m[?1l>[?2004l
+]2;rosrun slam_example depth_to_laser.py]1;rosrun320
+[31m[ERROR] [1680598723.100876, 854.068000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.179553, 854.116000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.268802, 854.164000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.366565, 854.208000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.438403, 854.247000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.518312, 854.289000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.658769, 854.342000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.740361, 854.383000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.834513, 854.432000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598723.969153, 854.494000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.083170, 854.528000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.176691, 854.583000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.262934, 854.624000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.387585, 854.664000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.484038, 854.710000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.553473, 854.755000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.678115, 854.826000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.801917, 854.859000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.902613, 854.916000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598724.999204, 854.954000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.112771, 855.001000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.198244, 855.030000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.277818, 855.067000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.355130, 855.107000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.510879, 855.183000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 106, in update
+    self._scan_update(self.scan_for_mapbuild, scans_mm, velocities, scan_angles_degrees)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 140, in _scan_update
+    velocities=velocities, scan_angles_degrees=scan_angles_degrees)
+TypeError: Wrong/insufficient arguments passed to Scan.update(): number of scan angles must equal number of scan distances
+
+[0m320
+[31m[ERROR] [1680598725.607741, 855.243000]: bad callback: <bound method DepthToLaserConverter.depth_callback of <__main__.DepthToLaserConverter instance at 0x7fef2041f200>>
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/dock/catkin_ws/src/src/gazebo_pkg_tests/slam_example/src/scripts/depth_to_laser.py", line 31, in depth_callback
+    scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
+  File "/usr/local/lib/python2.7/dist-packages/breezyslam/algorithms.py", line 259, in update
+    CoreSLAM.update(self, scans_mm, pose_change, scan_angles_degrees, should_update_map)
+  File "/usr/local/lib/python2.7/di

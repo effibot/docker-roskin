@@ -20,13 +20,13 @@ from message_filters import ApproximateTimeSynchronizer, Subscriber
 import matplotlib.pyplot as plt
 
 MAP_SIZE_PIXELS = 800
-MAP_SIZE_METERS = 8
+MAP_SIZE_METERS = 6
 
 
 class SLAMNode(object):
     def __init__(self):
         print("OK")
-        self.laser = Laser(45, 6.66, 240, 5600, 0, 20)
+        self.laser = Laser(45, 6.66, 240, 5400, 0, 100)
         self.slam = RMHC_SLAM(self.laser, MAP_SIZE_PIXELS, MAP_SIZE_METERS)
         self.pose_change = [0, 0, 0]
         self.pose_pub = None
@@ -44,7 +44,11 @@ class SLAMNode(object):
         cv2.waitKey(1)
 
     def slam_callback(self, scan, odom):
-        self.slam.update(list(scan.data), pose_change=odom.data,
+        odom_pose = (odom.data[0]**2 + odom.data[1]**2)**0.5
+        odom_orient = odom.data[2]
+        odom_time = odom.data[3]
+
+        self.slam.update(list(scan.data), pose_change=[odom_pose, odom_orient, odom_time],
                          scan_angles_degrees=list(np.linspace(-120, 120, 45)), should_update_map=True)
         self.display_map()
 

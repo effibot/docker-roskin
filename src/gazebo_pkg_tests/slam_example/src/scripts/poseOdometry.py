@@ -25,13 +25,12 @@ class OdomNode(object):
             self.pos_y = data.pose.pose.position.y
             self.orien_z = data.pose.pose.orientation.z
             self.dt_seconds = data.header.stamp
-            print(self.dt_seconds)
 
         else:
             dt = data.header.stamp - self.dt_seconds
             dx = data.pose.pose.position.x - self.pos_x
             dy = data.pose.pose.position.y - self.pos_y
-            dxy_mm = [dx*1e3, dy*1e3]
+            dxy_mm = [dy*1e3, dx*1e3]
             dtheta_rad = data.pose.pose.orientation.z - self.orien_z
             dtheta_degrees = dtheta_rad * 180 / math.pi
             print("dxy_mm:", dxy_mm)
@@ -42,11 +41,14 @@ class OdomNode(object):
             self.pos_x = data.pose.pose.position.x
             self.pos_y = data.pose.pose.position.y
             self.orien_z = data.pose.pose.orientation.z
-            self.publish([dxy_mm, dtheta_degrees, dt.to_sec()])
+            self.publish([dx, dy, dtheta_degrees, dt.to_sec()])
+        print("pos_x", self.pos_x)
+        print("pos_y", self.pos_y)
 
     def publish(self, data):
         msg = Float32MultiArray()
         msg.data = data
+        print(msg.data)
         self.pub.publish(msg)
 
     def run(self):
