@@ -44,16 +44,15 @@
         "[python]": {
           "editor.formatOnSave": true,
           "editor.formatOnPaste": true,
-          "editor.defaultFormatter": "ms-python.autopep8"
+          "editor.defaultFormatter": "ms-python.python"
         },
         "python.formatting.provider": "none",
         "python.formatting.autopep8Path": "/home/dock/.local/bin/autopep8",
         "python.formatting.autopep8Args": [
           "--max-line-length",
-          "70",
+          "90",
           "--aggressive"
         ],
-        "python.isort.path": "/home/dock/.local/bin/isort",
         "python.terminal.activateEnvironment": false,
         "python.venvPath": "/home/dock/venvs/"
       },
@@ -70,7 +69,6 @@
         "ms-ceintl.vscode-language-pack-it",
         "ms-iot.vscode-ros",
         "ms-python.autopep8",
-        "ms-python.isort",
         "ms-python.vscode-pylance",
         "ms-vscode.cpptools",
         "njpwerner.autodocstring",
