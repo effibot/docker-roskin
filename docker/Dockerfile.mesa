@@ -1,4 +1,5 @@
-FROM effibot/xenial:mesa-base
+FROM effibot/bionic:mesa-base
+
 # default user is dock (non-root but with sudo privileges) with UID and GID 1000
 # and home directory /home/dock
 
@@ -7,7 +8,7 @@ ENV NAOQI=${HOME}/naoqi
 ENV PYTHONPATH=${NAOQI}/pynaoqi/lib/python2.7/site-packages:${PYTHONPATH}
 ENV AL_DIR=${NAOQI}/naoqi-sdk
 ENV AL_DIR_SIM=${NAOQI}/naoqi-sdk
-ENV ROS_DISTRO=kinetic
+ENV ROS_DISTRO=melodic
 ENV ROS_PYTHON_VERSION=2.7
 ENV PATH=/opt/ros/${ROS_DISTRO}/bin:$PATH
 
@@ -25,28 +26,38 @@ COPY --chown={UID}:{GID} /config/ros_requirements.txt /tmp
 # install packages for ROS-Kinetic, ROS-Pepper interface and Gazebo plugins
 RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections &&\
     echo 'ros-pepper-meshes ros-pepper-meshes/accepted-ros-pepper-meshes boolean true' | sudo debconf-set-selections &&\
-    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list' && \
-    sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' &&\
+    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add - && \
-    wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -&&\
-    sudo apt-get update && xargs sudo apt install -y  < /tmp/ros_requirements.txt && \
-    sudo apt full-upgrade && sudo apt autoremove -y && sudo apt clean -y && \
+    sudo apt update && xargs sudo apt install -y  < /tmp/ros_requirements.txt && \
+    sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt clean -y && \
     sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*/apt/lists/* && \
-    echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
+    echo "source /opt/ros/${ROS_DISTRO}/setup.zsh" >> ~/.zshrc
 
 # add additional ROS-python packages then initialize rosdep
-RUN cd ${VENVS}/py27/bin && ./python -m pip install defusedxml rosdep rosinstall \
-    rosinstall_generator wstool catkin_tools && \
-    sudo rosdep init && rosdep update --include-eol-distros
+RUN cd ${VENVS}/py27/bin && ./python -m pip install --user --no-cache-dir --upgrade \
+    defusedxml rosdep rosinstall rosinstall_generator wstool catkin_tools
 
-# Install NAOqi ROS driver
+RUN sudo $(which rosdep) init && rosdep update --include-eol-distros
+
+# Install ROS-Naoqi packages stack from github
 RUN mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src && \
-    git clone https://github.com/ros-naoqi/naoqi_driver.git &&\
-    git clone -b correct_chain_model_and_gazebo_enabled https://github.com/awesomebytes/pepper_robot &&\
-    git clone -b simulation_that_works https://github.com/awesomebytes/pepper_virtual &&\
-    git clone https://github.com/awesomebytes/gazebo_model_velocity_plugin && \
-    cd ~/catkin_ws/src && rosdep install -i -y --from-paths ./naoqi_driver && \
-    . /opt/ros/kinetic/setup.sh && \
-    cd ~/catkin_ws && catkin_make && \
+    git clone https://github.com/ros-naoqi/naoqi_driver.git && \
+    git clone https://github.com/ros-naoqi/naoqi_dcm_driver.git && \
+    git clone https://github.com/ros-naoqi/pepper_dcm_robot.git && \
+    git clone https://github.com/ros-naoqi/naoqi_bridge.git && \
+    git clone https://github.com/ros-naoqi/naoqi_bridge_msgs.git && \
+    git clone https://github.com/ros-naoqi/pepper_robot.git && \
+    git clone https://github.com/ros-naoqi/pepper_virtual.git && \
+    git clone https://github.com/ros-naoqi/pepper_moveit_config.git && \
+    git clone https://github.com/ros-naoqi/naoqi_dashboard.git && \
+    git clone https://github.com/ros-drivers/rgbd_launch.git && \
+    git clone https://github.com/ahornung/humanoid_msgs.git && \
+    cd ~/catkin_ws/src/ && rosdep install -i -y --from-paths . && \
+    . /opt/ros/${ROS_DISTRO}/setup.sh && \
+    cd ~/catkin_ws && catkin build && \
     echo "source ~/catkin_ws/devel/setup.zsh" >> ~/.zshrc && \
     mkdir -p ${HOME}/workspace/src && ln -s ${HOME}/workspace/src ~/catkin_ws/src
+
+# Start zsh
+WORKDIR ${HOME}
+CMD ["/bin/zsh", "-l"]
