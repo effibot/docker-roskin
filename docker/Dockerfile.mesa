@@ -58,6 +58,7 @@ RUN mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src && \
     echo "source ~/catkin_ws/devel/setup.zsh" >> ~/.zshrc && \
     mkdir -p ${HOME}/workspace/src && ln -s ${HOME}/workspace/src ~/catkin_ws/src
 
+
 # Start zsh
 WORKDIR ${HOME}
 CMD ["/bin/zsh", "-l"]

@@ -1,0 +1,5 @@
+test
+/home/dock/workspace/devel/.private/test/cmake.lock /home/dock/workspace/devel/./cmake.lock
+/home/dock/workspace/devel/.private/test/share/test/cmake/testConfig-version.cmake /home/dock/workspace/devel/share/test/cmake/testConfig-version.cmake
+/home/dock/workspace/devel/.private/test/share/test/cmake/testConfig.cmake /home/dock/workspace/devel/share/test/cmake/testConfig.cmake
+/home/dock/workspace/devel/.private/test/lib/pkgconfig/test.pc /home/dock/workspace/devel/lib/pkgconfig/test.pc

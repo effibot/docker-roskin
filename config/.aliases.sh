@@ -19,3 +19,4 @@ alias pippo='roslaunch pepper_bringup pepper_full_py.launch nao_ip:=10.1.1.140 r
 alias pippa='roslaunch pepper_bringup pepper_full_py.launch nao_ip:=10.1.1.2 roscore_ip:=localhost'
 alias movebot='rosrun rqt_robot_steering rqt_robot_steering'
 alias movejoint='rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller'
+alias cb='cd ~/catkin_ws && catkin build -j5 && source devel/setup.zsh'

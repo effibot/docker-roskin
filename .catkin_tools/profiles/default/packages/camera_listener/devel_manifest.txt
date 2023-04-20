@@ -1,0 +1,5 @@
+real_pepper_pkg/camera_listener
+/home/dock/workspace/devel/.private/camera_listener/cmake.lock /home/dock/workspace/devel/./cmake.lock
+/home/dock/workspace/devel/.private/camera_listener/share/camera_listener/cmake/camera_listenerConfig-version.cmake /home/dock/workspace/devel/share/camera_listener/cmake/camera_listenerConfig-version.cmake
+/home/dock/workspace/devel/.private/camera_listener/share/camera_listener/cmake/camera_listenerConfig.cmake /home/dock/workspace/devel/share/camera_listener/cmake/camera_listenerConfig.cmake
+/home/dock/workspace/devel/.private/camera_listener/lib/pkgconfig/camera_listener.pc /home/dock/workspace/devel/lib/pkgconfig/camera_listener.pc
