@@ -58,6 +58,7 @@
       },
       "extensions": [
         "ms-python.python",
+        "ms-vscode.cmake-tools",
         "aaron-bond.better-comments",
         "donjayamanne.python-environment-manager",
         "github.copilot",

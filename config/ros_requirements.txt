@@ -15,3 +15,4 @@ ros-melodic-ros-control
 ros-melodic-ros-controllers
 ros-melodic-rosbridge-\*
 ros-melodic-tf2-\*
+ros-melodic-amcl

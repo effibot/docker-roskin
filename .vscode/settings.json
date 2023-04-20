@@ -2,5 +2,6 @@
     "files.associations": {
         "*.yml": "yaml",
         "stdexcept": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/src/pepper_launcher"
 }
