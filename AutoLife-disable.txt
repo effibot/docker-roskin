@@ -1,0 +1,7 @@
+#---- Procedura per la disattivazione del servizio di Autonomous Life del Pepper ----#
+0. Prendere nota dell'indirizzo IP del Pepper: <pepper ip>
+1. Accedere al Pepper con: ssh nao@<pepper ip>, password: pepshtpsw00n
+2. digitare: nao stop && naoqi-bin --disable-life
+3. Con un secondo terminale, riconnettersi come al passo 1
+4. digitare: qicli call ALMotion.wakeUp
+5. Lanciare i propri nodi ros a piacere
