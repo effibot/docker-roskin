@@ -31,7 +31,7 @@
         "python.analysis.autoSearchPaths": true,
         "python.analysis.diagnosticMode": "workspace",
         "python.analysis.extraPaths": [
-          "/opt/ros/kinetic/lib/python2.7/dist-packages"
+          "/opt/ros/melodic/lib/python2.7/dist-packages"
         ],
         "python.linting.pylintPath": "/home/dock/.local/lib/python2.7/site-packages/pylint",
         "python.analysis.typeCheckingMode": "basic",
