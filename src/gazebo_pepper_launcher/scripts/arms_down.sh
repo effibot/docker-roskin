@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Wait for the command topic to be there
-until rostopic info /pepper/LeftArm_controller/command > /dev/null 2>&1 && \
-      rostopic info /pepper/RightArm_controller/command > /dev/null 2>&1
+until rostopic info /pepper_dcm/LeftArm_controller/command > /dev/null 2>&1 && \
+      rostopic info /pepper_dcm/RightArm_controller/command > /dev/null 2>&1
 do
   echo "Waiting for controllers to be ready..."
   sleep 1.0
@@ -11,7 +11,7 @@ done
 echo "Lowering arms."
 sleep 5.0
 
-rostopic pub --once /pepper/LeftArm_controller/command trajectory_msgs/JointTrajectory "header:
+rostopic pub --once /pepper_dcm/LeftArm_controller/command trajectory_msgs/JointTrajectory "header:
   seq: 0
   stamp:
     secs: 0
@@ -27,7 +27,7 @@ points:
 
 
 
-rostopic pub --once /pepper/RightArm_controller/command trajectory_msgs/JointTrajectory "header:
+rostopic pub --once /pepper_dcm/RightArm_controller/command trajectory_msgs/JointTrajectory "header:
   seq: 0
   stamp:
     secs: 0

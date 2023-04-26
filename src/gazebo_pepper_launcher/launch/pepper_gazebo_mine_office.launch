@@ -3,6 +3,7 @@
   <!-- Load the URDF Model -->
   <include file="$(find pepper_description)/launch/pepper_upload.launch" />
 
+
   <env name="GAZEBO_MODEL_PATH" value="$(find gazebo_pepper_launcher)/models:$(optenv GAZEBO_MODEL_PATH)"/>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -15,7 +16,7 @@
 
   <include file="$(find pepper_control)/launch/pepper_control_trajectory.launch" unless="$(arg launch_control_trajectory_all)"/>
   <include file="$(find pepper_control)/launch/pepper_control_trajectory_all.launch" if="$(arg launch_control_trajectory_all)"/>
- <!-- <include file="$(find pepper_control)/launch/pepper_control_position.launch"/>-->
+  <!-- <include file="$(find pepper_control)/launch/pepper_control_position.launch"/>-->
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <!-- Spawn a robot into Gazebo -->
@@ -23,9 +24,26 @@
     args="-param robot_description -urdf -x -0.5 -y 1 -z 0.88 -model pepper_MP" />
 
 
-
   <node name="lower_arms" pkg="gazebo_pepper_launcher" type="arms_down.sh" output="screen" />
+  <include file="$(find gazebo_pepper_launcher)/launch/pepper_gazebo_depthimage.launch" />
+
  <!-- <node name="laser_publisher" pkg="pepper_gazebo_plugin" type="laser_publisher.py"/>
   -->
-
+  <node pkg="gmapping" type="slam_gmapping" name="gmap" args="">
+        <param name="base_frame" value="/base_link"/>
+        <param name="odom_frame" value="/odom_diffdrive"/>
+        <param name="map_frame" value="/map"/>
+        <param name="scan_topic" value="/laser3dscan"/>
+        <param name="maxRange" value="8.0"/>
+        <param name="sigma" value="0.05"/>
+        <param name="kernelSize" value="1"/>
+        <param name="lstep" value="0.05"/>
+        <param name="astep" value="0.05"/>
+        <param name="iterations" value="10"/>
+        <param name="lsigma" value="0.075"/>
+        <param name="ogain" value="3.0"/>
+        <param name="lskip" value="0"/>
+        <param name="srr" value="0.1"/>
+        <param name="srt" value="0.2"/>
+    </node>
 </launch>
