@@ -20,3 +20,4 @@ alias pippa='roslaunch pepper_bringup pepper_full_py.launch nao_ip:=10.1.1.2 ros
 alias movebot='rosrun rqt_robot_steering rqt_robot_steering'
 alias movejoint='rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller'
 alias cb='cd ~/catkin_ws && catkin build -j5 --summarize && source devel/setup.zsh'
+alias rviz='rosrun rviz rviz -d ~/workspace/src/rviz_config/pepper.rviz'

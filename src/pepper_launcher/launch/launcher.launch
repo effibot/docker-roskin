@@ -3,7 +3,7 @@
   <arg name="nao_ip"            default="$(optenv NAO_IP 127.0.0.1)" />
   <arg name="nao_port"          default="$(optenv NAO_PORT 9559)" />
   <arg name="namespace"           default="pepper_robot" />
-  <arg name="network_interface"  default="wlo1"/>
+  <arg name="network_interface"  default="docker0"/>
 
   <!-- Use CPP node by default for nao_sensors -->
   <arg name="force_python" default="true" />
@@ -51,6 +51,12 @@
   <include file="$(find pepper_launcher)/launch/slam_launcher.launch" ns="$(arg namespace)/slam" >
   </include>
 
+  <!-- launch gamepad teleop -->
+  <!-- <include file="$(find nao_teleop)/launch/teleop_joy.launch" ns="$(arg namespace)/teleop"></include> -->
+
+  <!-- launch octomapping -->
+  <include file="$(find pepper_launcher)/launch/octomap_mapping.launch" ns="$(arg namespace)/octo" >
+  </include>
 
   <!-- launch perception
   <include file="$(find pepper_bringup)/launch/perception.launch.xml">

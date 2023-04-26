@@ -1,6 +1,6 @@
 <launch>
 
-    <arg name="map"   default="$(find pepper_plymouth_ros)/maps/map.yaml" />
+    <arg name="map"   default="~/catkin_ws/src/pepper_launcher/maps/map.yaml" />
 
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)"/>
 
@@ -21,13 +21,12 @@
         <param name="planner_patience" value="3.0" />
         <param name="planner_frequency" value="0.5" />
         <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
-
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/local_planner.yaml" command="load" ns="TrajectoryPlannerROS" />
-        <rosparam file="$(find pepper_plymouth_ros)/nav_conf/local_planner.yaml" command="load" ns="DWAPlannerROS" />
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/costmap_common_params.yaml" command="load" ns="global_costmap" /> -->
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/costmap_common_params.yaml" command="load" ns="local_costmap" />  -->
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/local_costmap_params.yaml" command="load" />  -->
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/global_costmap_params.yaml" command="load" /> -->
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/local_planner.yaml" command="load" ns="TrajectoryPlannerROS" />   -->
+        <!-- <rosparam file="~/workspace/src/pepper_launcher/nav_conf/local_planner.yaml" command="load" ns="DWAPlannerROS" />  -->
     </node>
 
 </launch>

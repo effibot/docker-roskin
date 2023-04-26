@@ -17,3 +17,4 @@ ros-melodic-rosbridge-\*
 ros-melodic-tf2-\*
 ros-melodic-amcl
 ros-melodic-joy
+ros-melodic-rtabmap-ros
