@@ -3,5 +3,10 @@
         "*.yml": "yaml",
         "stdexcept": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/src/pepper_launcher"
+    "cmake.sourceDirectory": "${workspaceFolder}/src/pepper_launcher",
+    "python.analysis.extraPaths": [
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "./src/naoqi_bridge/naoqi_driver_py/src",
+        "./src/naoqi_bridge/naoqi_sensors_py/src"
+    ]
 }

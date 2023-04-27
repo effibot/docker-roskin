@@ -18,34 +18,34 @@ import std_srvs.srv
 def joint_angle_client():
 	#inhibitWalkSrv = rospy.ServiceProxy("inhibit_walk", std_srvs.srv.Empty)
 	#uninhibitWalkSrv = rospy.ServiceProxy("uninhibit_walk", std_srvs.srv.Empty)
-	
+
 	client = actionlib.SimpleActionClient("joint_trajectory", naoqi_bridge_msgs.msg.JointTrajectoryAction)
 	stiffness_client = actionlib.SimpleActionClient("joint_stiffness_trajectory", naoqi_bridge_msgs.msg.JointTrajectoryAction)
 	angle_client = actionlib.SimpleActionClient("joint_angles_action", naoqi_bridge_msgs.msg.JointAnglesWithSpeedAction)
-	
+
 	rospy.loginfo("Waiting for joint_trajectory and joint_stiffness servers...")
 	client.wait_for_server()
 	stiffness_client.wait_for_server()
 	angle_client.wait_for_server()
 	rospy.loginfo("Done.")
-	
+
 	#inhibitWalkSrv()
-	try:	
+	try:
 		goal = naoqi_bridge_msgs.msg.JointTrajectoryGoal()
-		
+
 		# move head: single joint, multiple keypoints
 		goal.trajectory.joint_names = ["HeadYaw"]
 		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(1.0), positions = [1.0]))
 		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(2.0), positions = [-1.0]))
 		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(2.5), positions = [0.0]))
-	
-		
+
+
 		rospy.loginfo("Sending goal...")
 		client.send_goal(goal)
 		client.wait_for_result()
 		result = client.get_result()
 		rospy.loginfo("Results: %s", str(result.goal_position.position))
-		
+
 		# Test for preemption
 		rospy.loginfo("Sending goal again...")
 		client.send_goal(goal)
@@ -54,9 +54,9 @@ def joint_angle_client():
 		client.cancel_goal()
 		client.wait_for_result()
 		if client.get_state() != GoalStatus.PREEMPTED or client.get_result() == result:
-		    rospy.logwarn("Preemption does not seem to be working")
+			rospy.logwarn("Preemption does not seem to be working")
 		else:
-		    rospy.loginfo("Preemption seems okay")
+			rospy.loginfo("Preemption seems okay")
 
 		# crouching pose: single keypoint, multiple joints:
 		goal.trajectory.joint_names = ["Body"]
@@ -68,47 +68,47 @@ def joint_angle_client():
 			-0.3, 0.057, -0.744, 2.192, -1.122, -0.035,	# right leg
 			1.545, -0.33, 1.57, 0.486, 0.0, 0.0]		# right arm
 		goal.trajectory.points = [point]
-	
+
 		rospy.loginfo("Sending goal...")
 		client.send_goal(goal)
 		client.wait_for_result()
 		rospy.loginfo("Getting results...")
-		result = client.get_result()	
-		print "Result:", ', '.join([str(n) for n in result.goal_position.position])
-		
-			
+		result = client.get_result()
+		print("Result:", ', '.join([str(n) for n in result.goal_position.position]))
+
+
 		# multiple joints, multiple keypoints:
 		goal.trajectory.joint_names = ["HeadYaw", "HeadPitch"]
 		goal.trajectory.points = []
-		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(0.5), 
+		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(0.5),
 														positions = [1.0, 1.0]))
-		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(1.0), 
+		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(1.0),
 														positions = [1.0, 0.0]))
-		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(1.5), 
+		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(1.5),
 														positions = [0.0, 0.0]))
-	
+
 		rospy.loginfo("Sending goal...")
 		client.send_goal(goal)
 		client.wait_for_result()
 		rospy.loginfo("Getting results...")
 		result = client.get_result()
-		print "Result:", ', '.join([str(n) for n in result.goal_position.position])
-		
-		
+		print("Result:", ', '.join([str(n) for n in result.goal_position.position]))
+
+
 		# multiple joints, single keypoint:
 		goal.trajectory.joint_names = ["HeadYaw", "HeadPitch"]
 		goal.trajectory.points = []
-		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(0.5), 
+		goal.trajectory.points.append(JointTrajectoryPoint(time_from_start = Duration(0.5),
 														positions = [0.5, 0.5]))
-	
+
 		rospy.loginfo("Sending goal...")
 		client.send_goal(goal)
 		client.wait_for_result()
 		rospy.loginfo("Getting results...")
 		result = client.get_result()
-		print "Result:", ', '.join([str(n) for n in result.goal_position.position])
-		
-		
+		print("Result:", ', '.join([str(n) for n in result.goal_position.position]))
+
+
 		# Control of joints with relative speed
 		angle_goal = naoqi_bridge_msgs.msg.JointAnglesWithSpeedGoal()
 		angle_goal.joint_angles.relative = False
@@ -119,7 +119,7 @@ def joint_angle_client():
 		angle_client.send_goal_and_wait(angle_goal)
 		result = angle_client.get_result()
 		rospy.loginfo("Angle results: %s", str(result.goal_position.position))
-		
+
 		# Test for preemption
 		angle_goal.joint_angles.joint_angles = [-1.0, 0.0]
 		angle_goal.joint_angles.speed = 0.05
@@ -130,9 +130,9 @@ def joint_angle_client():
 		angle_client.cancel_goal()
 		angle_client.wait_for_result()
 		if angle_client.get_state() != GoalStatus.PREEMPTED or angle_client.get_result() == result:
-		    rospy.logwarn("Preemption does not seem to be working")
+			rospy.logwarn("Preemption does not seem to be working")
 		else:
-		    rospy.loginfo("Preemption seems okay")
+			rospy.loginfo("Preemption seems okay")
 
 		# Test stiffness actionlib
 		stiffness_goal = naoqi_bridge_msgs.msg.JointTrajectoryGoal()
@@ -143,7 +143,7 @@ def joint_angle_client():
 		stiffness_client.wait_for_result()
 		result = stiffness_client.get_result()
 		rospy.loginfo("Stiffness results: %s", str(result.goal_position.position))
-		
+
 		# Test for preemption
 		stiffness_goal.trajectory.points = [JointTrajectoryPoint(time_from_start = Duration(0.5), positions = [0.0])]
 		rospy.loginfo("Sending goal again...")
@@ -153,20 +153,20 @@ def joint_angle_client():
 		stiffness_client.cancel_goal()
 		stiffness_client.wait_for_result()
 		if stiffness_client.get_state() != GoalStatus.PREEMPTED or stiffness_client.get_result() == result:
-		    rospy.logwarn("Preemption does not seem to be working")
+			rospy.logwarn("Preemption does not seem to be working")
 		else:
-		    rospy.loginfo("Preemption seems okay")
+			rospy.loginfo("Preemption seems okay")
 
 	finally:
 		pass #uninhibitWalkSrv()
-	
-	
-	
+
+
+
 if __name__ == '__main__':
 	try:
 		rospy.init_node('joint_angle_client')
 		joint_angle_client()
-		
+
 	except rospy.ROSInterruptException:
-  		print "program interrupted before completion"
+		print("program interrupted before completion")
 
