@@ -62,5 +62,7 @@
   <include file="$(find pepper_bringup)/launch/perception.launch.xml">
     <arg name="namespace"         value="$(arg namespace)" />
   </include>-->
+  <include file="$(find pepper_launcher)/launch/camera_transformation.launch"/>
+  <include file="$(find pepper_launcher)/launch/rtabmap_full.launch"/>
 
 </launch>
