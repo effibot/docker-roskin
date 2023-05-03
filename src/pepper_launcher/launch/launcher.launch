@@ -9,12 +9,20 @@
   <arg name="force_python" default="true" />
   <include file="$(find pepper_description)/launch/pepper_publisher.launch" />
 
-  <!-- nao driver works for pepper -->
+  <!-- nao driver works for pepper
+  <include file="$(find pepper_dcm_bringup)/launch/pepper_bringup.launch">
+    <arg name="robot_ip"    value="$(arg nao_ip)" />
+    <arg name="network_interface"  value="$(arg network_interface)" />
+  </include>-->
   <include file="$(find naoqi_driver)/launch/naoqi_driver.launch">
     <arg name="nao_ip"    value="$(arg nao_ip)" />
     <arg name="nao_port"  value="$(arg nao_port)" />
     <arg name="network_interface"  value="$(arg network_interface)" />
   </include>
+  <include file="$(find pepper_sensors_py)/launch/sonar.launch" >
+    <arg name="nao_ip"    value="$(arg nao_ip)" />
+  </include>
+
 <!-- Sonar Launcher
   <include file="$(find pepper_sensors_py)/launch/sonar.launch" >
     <arg name="nao_ip"    value="$(arg nao_ip)" />
@@ -43,20 +51,20 @@
     <arg name="color_space"     value="13" />
   </include>-->
 
-  <!-- launch pose manager -->
+  <!-- launch pose manager
   <include file="$(find naoqi_pose)/launch/pose_manager.launch" ns="$(arg namespace)/pose" >
     <arg name="nao_ip"            value="$(arg nao_ip)" />
-  </include>
-
+  </include> -->
+<!--
   <include file="$(find pepper_launcher)/launch/slam_launcher.launch" ns="$(arg namespace)/slam" >
-  </include>
+  </include>-->
 
   <!-- launch gamepad teleop -->
   <!-- <include file="$(find nao_teleop)/launch/teleop_joy.launch" ns="$(arg namespace)/teleop"></include> -->
 
-  <!-- launch octomapping -->
+  <!-- launch octomapping
   <include file="$(find pepper_launcher)/launch/octomap_mapping.launch" ns="$(arg namespace)/octo" >
-  </include>
+  </include>-->
 
   <!-- launch perception
   <include file="$(find pepper_bringup)/launch/perception.launch.xml">

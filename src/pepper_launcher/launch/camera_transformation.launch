@@ -5,18 +5,17 @@
   <arg name="camera_ir" default="/naoqi_driver/camera/ir"/>
 
   <!-- Launch the image_proc node -->
+  <node pkg="nodelet" type="nodelet" args="manager" name="record_manager"/>
 
-  <!-- Republish the rectified and color-corrected image -->
+  <!-- Republish the rectified and color-corrected image
   <group ns="$(arg camera_bottom)">
       <node name="image_proc" pkg="image_proc" type="image_proc"/>
   </group>
 
   <group ns="$(arg camera_front)">
     <node name="image_proc" pkg="image_proc" type="image_proc"/>
-  </group>
+  </group>-->
   <!-- Convert the depth image to an RGB image -->
-  <node pkg="nodelet" type="nodelet" args="manager"
-        name="record_manager" output="screen"/>
   <node pkg="nodelet" type="nodelet" name="conversion_depth" args="load depth_image_proc/convert_metric record_manager --no-bond">
     <remap from="image_raw" to="$(arg camera_depth)/image_raw"/>
     <remap from="image" to="$(arg camera_depth)/image_rgb"/>
@@ -28,7 +27,7 @@
     </node>
   </group>
 
-            <!-- Depth Registerd-->
+  <!-- Depth Registerd-->
   <node pkg="nodelet" type="nodelet" name="register" args="load depth_image_proc/register record_manager --no-bond">
     <remap from="depth/image_rect" to="$(arg camera_depth)/image_rect"/>
     <remap from="depth/camera_info" to="$(arg camera_depth)/camera_info"/>
