@@ -11,7 +11,7 @@
   <group ns="rtabmap">
     <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start">
       <param name="frame_id"               type="string" value="$(arg frame_id)"/>
-      <param name"wait_for_transform" type="bool" value="true"/>
+      <param name="wait_for_transform" type="bool" value="true"/>
       <param name="imu_topic" value="/naoqi_driver/imu/base"/>
       <param name="database_path" type="string" value="/home/dock/workspace/src/database/rtabmap.db"/>
       <param name="approx_sync" value="true"/>
