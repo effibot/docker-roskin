@@ -1,15 +1,15 @@
 <!-- Load full set of processing nodelets for a RGBD device -->
 <launch>
 
-  <!-- Name of nodelet manager -->
-  <arg name="manager" />
+  <!-- Name of nodelet manager  <arg name="manager" value="$(arg manager)"/>-->
+  <arg name="manager" default="manager_sync"/>
 
   <!-- Launch robustly (bonds + respawn) or not? -->
   <arg name="respawn" default="false" />
   <arg     if="$(arg respawn)" name="bond" value="" />
   <arg unless="$(arg respawn)" name="bond" value="--no-bond" />
   <arg name="queue_size" default="5" />
-  
+
   <!-- Processing modules -->
   <arg name="rgb_processing" default="true" />
   <arg name="debayer_processing" default="true" />
@@ -20,7 +20,7 @@
   <arg name="disparity_registered_processing" default="true" />
   <arg name="sw_registered_processing" default="true" />
   <arg name="hw_registered_processing" default="true" />
-  
+
   <!-- Remapping arguments -->
   <arg name="rgb"                       default="rgb" />
   <arg name="ir"                        default="ir" />

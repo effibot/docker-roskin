@@ -1,8 +1,7 @@
 <launch>
-
   <arg name="nao_ip"            default="$(optenv NAO_IP 127.0.0.1)" />
   <arg name="nao_port"          default="$(optenv NAO_PORT 9559)" />
-  <arg name="namespace"           default="pepper_robot" />
+  <arg name="namespace"           default="$(optenv ROS_NAMESPACE naoqi_driver)" />
   <arg name="network_interface"  default="docker0"/>
 
   <!-- Use CPP node by default for nao_sensors -->
@@ -19,58 +18,18 @@
     <arg name="nao_port"  value="$(arg nao_port)" />
     <arg name="network_interface"  value="$(arg network_interface)" />
   </include>
-  <include file="$(find pepper_sensors_py)/launch/sonar.launch" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-  </include>
 
-<!-- Sonar Launcher
-  <include file="$(find pepper_sensors_py)/launch/sonar.launch" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-  </include>-->
-<!-- Laser Launcher
-  <include file="$(find pepper_sensors_py)/launch/laser.launch" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-  </include>-->
-<!-- Camera Depth Launcher
-  <include file="$(find pepper_launcher)/launch/camera_launcher.launch" ns="$(arg namespace)/camera/depth" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-    <arg name="source"          value="2" />
-    <arg name="color_space"     value="13" />
-    <arg name="resolution"      value="12" />
-  </include>-->
-<!-- Camera Front Launcher
-  <include file="$(find pepper_launcher)/launch/camera_launcher.launch" ns="$(arg namespace)/camera/front" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-    <arg name="source"          value="0" />
-    <arg name="color_space"     value="13" />
-  </include>-->
-<!-- Camera Bottom Launcher
-  <include file="$(find pepper_launcher)/launch/camera_launcher.launch" ns="$(arg namespace)/camera/bottom" >
-    <arg name="nao_ip"    value="$(arg nao_ip)" />
-    <arg name="source"          value="1" />
-    <arg name="color_space"     value="13" />
-  </include>-->
-
-  <!-- launch pose manager
+  <!-- launch pose manager -->
   <include file="$(find naoqi_pose)/launch/pose_manager.launch" ns="$(arg namespace)/pose" >
     <arg name="nao_ip"            value="$(arg nao_ip)" />
-  </include> -->
-<!--
-  <include file="$(find pepper_launcher)/launch/slam_launcher.launch" ns="$(arg namespace)/slam" >
-  </include>-->
+  </include>
 
-  <!-- launch gamepad teleop -->
-  <!-- <include file="$(find nao_teleop)/launch/teleop_joy.launch" ns="$(arg namespace)/teleop"></include> -->
 
-  <!-- launch octomapping
-  <include file="$(find pepper_launcher)/launch/octomap_mapping.launch" ns="$(arg namespace)/octo" >
-  </include>-->
-
-  <!-- launch perception
+    <!-- launch perception-->
   <include file="$(find pepper_bringup)/launch/perception.launch.xml">
-    <arg name="namespace"         value="$(arg namespace)" />
-  </include>-->
-  <include file="$(find pepper_launcher)/launch/camera_transformation.launch"/>
+      <arg name="namespace"         value="$(arg namespace)" />
+  </include>
+<!-- launch rtabmap -->
   <include file="$(find pepper_launcher)/launch/rtabmap_full.launch"/>
 
 </launch>

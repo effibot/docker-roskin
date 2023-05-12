@@ -4,27 +4,27 @@
     "front_camera": {
       "enabled": true,
       "resolution": 1,
-      "fps": 30,
+      "fps": 20,
       "recorder_fps": 15
     },
     "bottom_camera": {
       "enabled": true,
       "resolution": 1,
-      "fps": 10,
-      "recorder_fps": 5
+      "fps": 20,
+      "recorder_fps": 15
     },
     "depth_camera": {
       "enabled": true,
       "xtion_resolution": 1,
       "stereo_resolution": 9,
       "fps": 20,
-      "recorder_fps": 10
+      "recorder_fps": 15
     },
     "stereo_camera": {
       "enabled": true,
       "resolution": 15,
-      "fps": 10,
-      "recorder_fps": 5
+      "fps": 20,
+      "recorder_fps": 15
     },
     "ir_camera": {
       "enabled": true,
@@ -46,11 +46,11 @@
     },
     "imu_torso": {
       "enabled": true,
-      "frequency": 10
+      "frequency": 30
     },
     "imu_base": {
       "enabled": true,
-      "frequency": 10
+      "frequency": 30
     },
     "joint_states": {
       "enabled": true,
@@ -80,7 +80,7 @@
     },
     "odom": {
       "enabled": true,
-      "frequency": 15
+      "frequency": 30
     }
   }
 }

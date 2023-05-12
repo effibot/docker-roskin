@@ -1,48 +1,38 @@
 <launch>
+   <arg name="imu_topic"               default="/naoqi_driver/imu/base" />
+  <arg name="imu_ignore_acc"          default="true" />
+  <arg name="imu_remove_gravitational_acceleration" default="true" />
+  <arg name="frame_id"                default="base_footprint" />
+  <arg name="rgb_topic"               default="/naoqi_driver/camera/front/image_raw" />
+  <arg name="depth_topic"             default="/naoqi_driver/camera/depth/image_raw" />
+  <arg name="camera_info_topic"       default="/naoqi_driver/camera/front/camera_info" />
+
+
   <group ns="rtabmap">
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start">
+      <param name="frame_id"               type="string" value="$(arg frame_id)"/>
+      <param name"wait_for_transform" type="bool" value="true"/>
+      <param name="imu_topic" value="/naoqi_driver/imu/base"/>
+      <param name="database_path" type="string" value="/home/dock/workspace/src/database/rtabmap.db"/>
+      <param name="approx_sync" value="true"/>
+      <param name="subscribe_depth" type="bool" value="true"/>
+      <param name="subscribe_rgbd" type="bool" value="false"/>
+      <param name="subscribe_scan" type="bool" value="true"/>
+      <remap from="rgb/image"       to="$(arg rgb_topic)"/>
+      <remap from="depth/image"     to="$(arg depth_topic)"/>
+      <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
+      <remap from="odom" to="/naoqi_driver/odom"/>
+      <remap from="scan" to="/naoqi_driver/laser"/>
+      <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="10"/>
+      <param name="queue_size" type="int" value="10"/>
+      <param name="Grid/3D" type="string" value="true"/>
+      <param name="Grid/Sensor"  type="int" value="2"/>
+      <param name="Reg/Force3DoF" type="string" value="true"/>
+      <param name="Reg/Force3DoF" value="true" />
+      <param name="Reg/Strategy" type="string" value="1"/>
 
-    <!-- Use RGBD synchronization -->
-    <!-- Here is a general example using a standalone nodelet,
-         but it is recommended to attach this nodelet to nodelet
-         manager of the camera to avoid topic serialization -->
-    <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync" output="screen">
-      <remap from="rgb/image"       to="/naoqi_driver/camera/front/image"/>
-      <remap from="depth/image"     to="/naoqi_driver/camera/depth/image_raw"/>
-      <remap from="rgb/camera_info" to="/naoqi_driver/camera/front/camera_info"/>
-      <remap from="rgbd_image"      to="rgbd_image"/> <!-- output -->
-
-      <!-- Should be true for not synchronized camera topics (e.g., false for kinectv2, zed, realsense, true for xtion, kinect360)-->
-      <param name="approx_sync"       value="true"/>
-
-    </node>
-
-    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start">
-          <param name="frame_id" type="string" value="base_footprint"/>
-
-          <param name="subscribe_depth" type="bool" value="false"/>
-          <param name="subscribe_rgbd" type="bool" value="true"/>
-          <param name="subscribe_scan" type="bool" value="true"/>
-
-          <remap from="odom" to="/naoqi_driver/odom"/>
-          <remap from="scan" to="/naoqi_driver/laser"/>
-          <remap from="rgbd_image" to="rgbd_image"/>
-
-          <param name="queue_size" type="int" value="10"/>
-          <!-- RTAB-Map's parameters -->
-          <param name="Odom/Strategy" value="1"/>
-          <param name="RGBD/NeighborLinkRefining" type="string" value="true"/>
-          <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="10"/>
-          <param name="RGBD/ProximityBySpace"     type="string" value="true"/>
-          <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
-          <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
-          <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
-          <param name="Grid/Sensor"            type="string" value="true"/> <!-- occupancy grid from lidar -->
-          <param name="Reg/Force3DoF"             type="string" value="true"/>
-          <param name="Reg/Strategy"              type="string" value="1"/> <!-- 1=ICP -->
-
-          <!-- ICP parameters -->
-          <param name="Icp/VoxelSize"                 type="string" value="0.05"/>
-          <param name="Icp/MaxCorrespondenceDistance" type="string" value="0.1"/>
+      <param name="Icp/VoxelSize"                 type="string" value="0.05"/>
+      <param name="Icp/MaxCorrespondenceDistance" type="string" value="0.1"/>
     </node>
   </group>
 </launch>
