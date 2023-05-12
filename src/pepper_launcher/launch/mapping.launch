@@ -1,23 +1,23 @@
 <launch>
-    <arg name="nao_ip"            default="$(optenv NAO_IP 10.1.1.3)" />
-    <arg name="nao_port"          default="$(optenv NAO_PORT 9559)" />
-    <arg name="namespace"           default="pepper_robot" />
-    <arg name="network_interface"  default="docker0"/>
+    <!-- Basic properties -->
+    <arg name="nao_ip" default="$(optenv NAO_IP 10.1.1.3)" />
+    <arg name="nao_port" default="$(optenv NAO_PORT 9559)" />
+    <arg name="namespace" default="pepper_robot" />
+    <arg name="network_interface" default="docker0"/>
+    <arg name="map_file" default="$(find pepper_launcher)/maps/map.yaml" />
+    <arg name="rviz" default="true" /> <!-- Autolaunch RViz -->
 
     <!-- Use CPP node by default for nao_sensors -->
     <arg name="force_python" default="true" />
     <include file="$(find pepper_description)/launch/pepper_publisher.launch" />
 
-    <!-- nao driver works for pepper
-    <include file="$(find pepper_dcm_bringup)/launch/pepper_bringup.launch">
-        <arg name="robot_ip"    value="$(arg nao_ip)" />
-        <arg name="network_interface"  value="$(arg network_interface)" />
-    </include>-->
+    <!-- nao driver works for pepper -->
     <include file="$(find naoqi_driver)/launch/naoqi_driver.launch">
         <arg name="nao_ip"    value="$(arg nao_ip)" />
         <arg name="nao_port"  value="$(arg nao_port)" />
         <arg name="network_interface"  value="$(arg network_interface)" />
     </include>
+    <!-- Sonar Launcher -->
     <include file="$(find pepper_sensors_py)/launch/sonar.launch" >
         <arg name="nao_ip"    value="$(arg nao_ip)" />
     </include>
@@ -57,5 +57,8 @@
         <!--<param name="str" value="0.1" />-->
         <!--<param name="stt" value="0.2" />-->
     </node>
-
+    <!-- Map Server -->
+    <!--<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />-->
+    <!-- RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d /home/dock/workspace/src/rviz_config/pepper.rviz" required="$(arg rviz)" />
 </launch>
