@@ -6,17 +6,11 @@
   <arg name="rgb_topic"               default="/naoqi_driver/camera/front/image_raw" />
   <arg name="depth_topic"             default="/naoqi_driver/camera/depth/image_raw" />
   <arg name="camera_info_topic"       default="/naoqi_driver/camera/front/camera_info" />
-  <arg name="laser_topic"             default="/naoqi_driver/laser" />
-  <arg name='expand_factor' default='10'/>
-  <arg name='use_center' default='False'/>
-  <node name='laser_expander' pkg='pepper_launcher' type='laser_expander.py' output='screen'>
-      <param name='expand_factor' type='int' value='$(arg expand_factor)'/>
-      <param name='use_center' type='bool' value='$(arg use_center)'/>
-  </node>
-
+  <arg name="odom_topic"              default="/naoqi_driver/odom" />
+  <arg name="laser_topic" default="/naoqi_driver/laser" />
   <group ns="rtabmap">
     <!--SLAM-->
-    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start">
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start --verbosity 3">
       <param name="frame_id"               type="string" value="$(arg frame_id)"/>
 
       <param name="subscribe_depth" type="bool" value="true"/>
@@ -25,17 +19,27 @@
       <remap from="rgb/image"       to="$(arg rgb_topic)"/>
       <remap from="depth/image"     to="$(arg depth_topic)"/>
       <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
-      <remap from="odom" to="/naoqi_driver/odom"/>
-      <remap from="scan" to="/laser_expander"/>
+      <remap from="odom" to="$(arg odom_topic)"/>
+      <remap from="scan" to="$(arg laser_topic)"/>
+      <param name="imu" value="$(arg imu_topic)"/>
       <!--<remap from="rgbd_image" to="/naoqi_driver/rgbd_image"/>-->
-      <param name="queue_size" type="int" value="20"/>
+      <param name="queue_size" type="int" value="10"/>
+
       <param name="Grid/3D" type="string" value="true"/>
-      <param name="Grid/Sensor"  type="int" value="0"/> <!-- occupancy grid from lidar -->
+      <param name="Grid/Scan2dUnknownSpaceFilled" value="true"/>
+      <param name="Grid/RayTracing" type="string" value="true"/>
+      <!--<param name="Grid/CellSize" type="string" value="0.05"/>-->
+
       <param name="Reg/Force3DoF" type="string" value="true"/>
-      <param name="Reg/Force3DoF" value="true" />
       <param name="Reg/Strategy" type="string" value="1"/> <!-- 1=ICP -->
 
-      <!-- ICP parameters -->
+      <!--<param name="Optimizer/Strategy" type="string" value="0"/>
+      <param name="Vis/EstimationType" type="string" value="0"/>
+      <param name="Vis/MinInliers" type="string" value="10"/>
+
+      <param name="Icp/Strategy"                 type="string" value="2"/>
+      <param name="Icp/PointToPlane"             type="string" value="true"/>
+      <param name="Icp/MaxTranslation"           type="string" value="0.3"/>-->
       <param name="Icp/VoxelSize"                 type="string" value="0.05"/>
       <param name="Icp/MaxCorrespondenceDistance" type="string" value="0.1"/>
     </node>
