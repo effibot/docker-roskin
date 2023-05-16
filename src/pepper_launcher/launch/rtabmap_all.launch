@@ -6,6 +6,14 @@
   <arg name="rgb_topic"               default="/naoqi_driver/camera/front/image_raw" />
   <arg name="depth_topic"             default="/naoqi_driver/camera/depth/image_raw" />
   <arg name="camera_info_topic"       default="/naoqi_driver/camera/front/camera_info" />
+  <arg name="laser_topic"             default="/naoqi_driver/laser" />
+  <arg name='expand_factor' default='10'/>
+  <arg name='use_center' default='False'/>
+  <node name='laser_expander' pkg='pepper_launcher' type='laser_expander.py' output='screen'>
+      <param name='expand_factor' type='int' value='$(arg expand_factor)'/>
+      <param name='use_center' type='bool' value='$(arg use_center)'/>
+  </node>
+
   <group ns="rtabmap">
     <!--SLAM-->
     <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start">
@@ -18,12 +26,11 @@
       <remap from="depth/image"     to="$(arg depth_topic)"/>
       <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
       <remap from="odom" to="/naoqi_driver/odom"/>
-      <remap from="scan" to="/naoqi_driver/laser"/>
+      <remap from="scan" to="/laser_expander"/>
       <!--<remap from="rgbd_image" to="/naoqi_driver/rgbd_image"/>-->
-      <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="10"/>
-      <param name="queue_size" type="int" value="10"/>
+      <param name="queue_size" type="int" value="20"/>
       <param name="Grid/3D" type="string" value="true"/>
-      <param name="Grid/Sensor"  type="int" value="2"/> <!-- occupancy grid from lidar -->
+      <param name="Grid/Sensor"  type="int" value="0"/> <!-- occupancy grid from lidar -->
       <param name="Reg/Force3DoF" type="string" value="true"/>
       <param name="Reg/Force3DoF" value="true" />
       <param name="Reg/Strategy" type="string" value="1"/> <!-- 1=ICP -->

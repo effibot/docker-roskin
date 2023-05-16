@@ -30,8 +30,10 @@
       <arg name="namespace"         value="$(arg namespace)" />
   </include>
 <!-- launch rtabmap -->
-  <include file="$(find pepper_launcher)/launch/rtabmap_full.launch"/>
+  <include file="$(find pepper_launcher)/launch/rtabmap_all.launch"/>
 
+  <?ignore
   <include file="$(find nao_teleop)/launch/teleop_joy.launch" ns="$(arg namespace)/teleop" >
   </include>
+  ?>
 </launch>
