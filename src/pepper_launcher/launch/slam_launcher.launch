@@ -3,6 +3,7 @@
     <arg name="nao_port"          default="$(optenv NAO_PORT 9559)" />
     <arg name="namespace"           default="pepper_robot" />
     <arg name="network_interface"  default="docker0"/>
+    <arg name="rviz" default="true" /> <!-- Autolaunch RViz -->
 
     <!-- Use CPP node by default for nao_sensors -->
     <arg name="force_python" default="true" />
@@ -14,87 +15,50 @@
         <arg name="network_interface"  value="$(arg network_interface)" />
     </include>
 
-    <!--<node pkg="slam_example" type="scanLaser.py" name="pepper_lidar"/>
-    <node pkg="slam_example" type="poseOdometry.py" name="pepper_odom_derivative"/> -->
-    <!-- U <node pkg="slam_example" type="slam_node.py" name="pepper_lidar2"/> -->
-    <!-- Depth Image to Laser Scan Node -->
-    <node pkg="rostopic" type="rostopic" name="rostopic" args="echo /naoqi_driver/camera/depth/image_raw"/>
 
-    <node name="depthimage_to_laserscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" args="">
-
-        <remap from="image"       to="/naoqi_driver/camera/depth/image_raw"/> <!-- change here for your camera depth topic name. Default: "/camera/depth/image_raw" -->
-
-        <remap from="camera_info" to="/naoqi_driver/camera/depth/camera_info"/>
-        <!-- the remap for camera_info by default uses the same path as the one given to the image topic. Default: "<path_to_image_topic>/camera_info>" -->
-
-        <!-- PARAMETERS: -->
-        <!-- These are the default values. -->
-        <param name="scan_height"     type="int"    value="1"/> <!-- default: 1 pixel. Number of pixel rows used to generate laser scan. -->
-        <param name="scan_time"       type="double" value="0.022"/> <!-- default:0.033, 30 FPS . Time between scans. -->
-        <param name="range_min"       type="double" value="0.40"/> <!--default:0.45m. Ranges less than this are considered -Inf. -->
-        <param name="range_max"       type="double" value="8.00"/> <!--default: 10m. Ranges less than this are considered +Inf. -->
-        <param name="output_frame_id" type="str"    value="/base_footprint"/> <!--default: camera_depth_frame. Frame id of the laser scan. -->
-
-    </node>
     <arg name='expand_factor' default='10'/>
+    <arg name='use_center' default='False'/>
+
     <node name='laser_expander' pkg='pepper_launcher' type='laser_expander.py' output='screen'>
         <param name='expand_factor' type='int' value='$(arg expand_factor)'/>
+        <param name='use_center' type='bool' value='$(arg use_center)'/>
     </node>
-    <node pkg="gmapping" type="slam_gmapping" name="gmap" args="" >
-        <!--<remap from="/scan" to="/pepper_robot/laser"/> -->
+    <node pkg="gmapping" type="slam_gmapping" name="gmap" output="screen" >
         <param name="base_frame" value="/base_footprint"/>
         <param name="odom_frame" value="/odom"/>
         <param name="map_frame" value="/map"/>
-        <param name="scan_topic" value="/laser_expand"/>
-        <param name="maxRange" value="8.0"/>
+        <param name="scan_topic" value="/laser_expander"/>
+        <param name="map_update_interval" value="1.0"/>
+        <param name="maxUrange" value="2.0"/>
         <param name="sigma" value="0.05"/>
         <param name="kernelSize" value="1"/>
         <param name="lstep" value="0.05"/>
         <param name="astep" value="0.05"/>
-        <param name="iterations" value="10"/>
+        <param name="iterations" value="20"/>
         <param name="lsigma" value="0.075"/>
         <param name="ogain" value="3.0"/>
         <param name="lskip" value="0"/>
+        <param name="minimumScore" value="0"/>
         <param name="srr" value="0.1"/>
         <param name="srt" value="0.2"/>
-        <param name="map_update_interval" value="2" />
-        <param name="linearUpdate" value="0.1" />
-        <param name="angularUpdate" value="0.1" />
-        <param name="temporalUpdate" value=".5" />
-        <param name="xmin" value="-10." />
-        <param name="ymin" value="-10." />
-        <param name="xmax" value="10." />
-        <param name="ymax" value="10." />
-        <param name="particles" value="300" />
-        <param name="maxRange" value="1.5" />
-        <param name="maxUrange" value="1.1" />
-        <param name="delta" value="0.02" />
+        <param name="str" value="0.1"/>
+        <param name="stt" value="0.2"/>
+        <param name="linearUpdate" value="0.5"/>
+        <param name="angularUpdate" value="0.0698132"/>
+        <param name="temporalUpdate" value="0.01"/>
+        <param name="resampleThreshold" value="0.5"/>
+        <param name="particles" value="300"/>
+        <param name="xmin" value="-100.0"/>
+        <param name="ymin" value="-100.0"/>
+        <param name="xmax" value="100.0"/>
+        <param name="ymax" value="100.0"/>
+        <param name="delta" value="0.05"/>
+        <param name="llsamplerange" value="0.01"/>
+        <param name="llsamplestep" value="0.01"/>
+        <param name="tranform_publish_period" value="0.05"/>
+        <param name="occ_thresh" value="0.25"/>
+        <param name="maxRange" value="3.0"/>
     </node>
-
-    <!--<node name="pointcloud_laserscan1" pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" args="">
-        <remap from="cloud_in" to="/cloudl"/>
-        <remap from="scan" to="/scanlaserleft"/>
-        <param name="target_frame" value="SurroundingLeftLaser_frame"/>
-        <param name="min_height" value="0.0"/>
-        <param name="max_height" value="0.0"/>
-        <param name="angle_min" value="-0.523599028587"/>
-        <param name="angle_max" value="0.523599028587"/>
-        <param name="angle_increment" value="0.0747998580337"/>
-        <param name="scan_time" value="0.0"/>
-        <param name="range_min" value="0.300000011921"/>
-        <param name="range_max" value="7.0"/>
-    </node>
-    <node name="pointcloud_laserscan2" pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" args="">
-        <remap from="cloud_in" to="/cloudr"/>
-        <remap from="scan" to="/scanlaserright"/>
-        <param name="target_frame" value="SurroundingRightLaser_frame"/>
-        <param name="min_height" value="0.0"/>
-        <param name="max_height" value="0.0"/>
-        <param name="angle_min" value="-0.523599028587"/>
-        <param name="angle_max" value="0.523599028587"/>
-        <param name="angle_increment" value="0.0747998580337"/>
-        <param name="scan_time" value="0.0"/>
-        <param name="range_min" value="0.300000011921"/>
-        <param name="range_max" value="7.0"/>
-    </node>-->
+<!-- RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d /home/dock/workspace/src/rviz_config/pepper.rviz" required="$(arg rviz)" />
 </launch>

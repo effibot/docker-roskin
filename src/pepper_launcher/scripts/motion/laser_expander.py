@@ -10,6 +10,8 @@
 """
 
 import argparse
+
+from numpy import linspace
 import rospy
 import numpy as np
 from sensor_msgs.msg import LaserScan
@@ -70,25 +72,47 @@ class laser_listener():
         expanded_msg.ranges = expanded_scan
         self.pub.publish(expanded_msg)
 
-    def expand_scan(self, scan, factor, angle_start, angle_end):
-        scan_lenght = len(scan) # 15
-        expanded_scan = np.zeros(factor*scan_lenght-1) # default value is 150
-        # pre-fill the expanded scan with the true scan points
+    def min_interpolation(self, scan, scan_length, factor):
+        expanded_scan = np.zeros(factor*scan_length)
         expanded_scan[0] = scan[0]
-        for i in range(1, scan_lenght):
+        expanded_scan[-1] = scan[-1]
+        for i in range(1, scan_length):
+            # pre-fill the expanded scan with the true scan points
+            expanded_scan[i*factor] = scan[i]
+            rho = min(scan[i-1], scan[i])
+            start = i*factor - factor + 1
+            end = i*factor+1
+            expanded_scan[start:end] = [rho for j in range(factor)]
+        return expanded_scan
+
+    def mid_interpolation(self, scan, scan_length, angle_span, factor):
+        expanded_scan = np.zeros(factor*scan_length-1)
+        expanded_scan[0] = scan[0]
+        expanded_scan[-1] = scan[-1]
+        for i in range(1, scan_length):
             # get previous and current scan point x,y coordinates
-            pred = [scan[i-1]*np.cos(angle_start),scan[i-1]*np.sin(angle_start)]
-            curr = [scan[i]*np.cos(angle_end),scan[i]*np.sin(angle_end)]
+            pred = [scan[i-1]*np.cos(angle_span[i-1]),scan[i-1]*np.sin(angle_span[i-1])]
+            curr = [scan[i]*np.cos(angle_span[i]),scan[i]*np.sin(angle_span[i])]
             # get the midpoint between the previous and current scan point
             mid = [(pred[0]+curr[0])/2, (pred[1]+curr[1])/2]
             # pre-fill the expanded scan with the true scan points
             expanded_scan[i*factor] = scan[i]
             # now expand
+            #line = self.linear_interpolation(pred, mid, factor)
             for j in range(1,factor):
                 # fill the expanded scan with the expanded scan points
-                expanded_scan[(i-1)*factor+j] = np.sqrt(mid[0]**2+mid[1]**2)
+                #expanded_scan[(i-1)*factor+j] = np.sqrt(line[j][0]**2 + line[j][1]**2)
+                expanded_scan[(i-1)*factor+j] = np.sqrt(mid[0]**2 + mid[1]**2)
         return expanded_scan
-
+    
+    def expand_scan(self, scan, factor, angle_start, angle_end):
+        scan_length = len(scan) # 15
+        # pre-fill the expanded scan with the true scan points
+        angle_span = [angle_start + i*self.angle_increment for i in range(scan_length)]
+        angle_span_fitted = [angle_start + i*self.angle_increment/factor for i in range(factor*scan_length-1)]
+        expanded_scan = self.min_interpolation(scan, scan_length, factor)
+        return expanded_scan
+    
 if __name__ =='__main__':
     factor = rospy.get_param("/laser_expander/expand_factor")
     center = rospy.get_param("/laser_expander/use_center")
