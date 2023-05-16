@@ -18,3 +18,10 @@ ros-melodic-tf2-\*
 ros-melodic-amcl
 ros-melodic-joy
 ros-melodic-rtabmap-ros
+ros-melodic-dwa-\*
+ros-melodic-neonavigation-common
+ros-melodic-trajectory-tracker
+ros-melodic-trajectory-tracker-dbgsym
+ros-melodic-trajectory-tracker-msgs
+ros-melodic-trajectory-tracker-rviz-plugins
+ros-melodic-trajectory-tracker-rviz-plugins-dbgsym

@@ -9,13 +9,14 @@
         We are exploiting the fact that the driver publishes the ranges after a transformation to the base_footprint frame, so we don't have to do it.
 """
 
+import argparse
 import rospy
 import numpy as np
 from sensor_msgs.msg import LaserScan
 
 class laser_listener():
 
-    def __init__(self, factor = 2, rate = 10):
+    def __init__(self, factor = 2, use_center = False, rate = 10):
         self.angle_min = -0.523599 # -30 degrees in radians
         self.right_angle_max = 0.523599 # 30 degrees in radians
         self.center_angle_min = 1.0472 # 60 degrees in radians
@@ -25,9 +26,10 @@ class laser_listener():
         self.angle_increment = 0.0698132 # 4 degrees in radians
         self.factor = factor
         rospy.Subscriber("/naoqi_driver/laser",LaserScan, self.listen_callback)
-        self.pub = rospy.Publisher("/laser_expand",LaserScan, queue_size=10)
-        rospy.init_node("laser_listener")
+        self.pub = rospy.Publisher("/laser_expander",LaserScan, queue_size=10)
+        rospy.init_node("laser_expander")
         self.rate = rospy.Rate(rate)
+        self.use_center = use_center
 
     def listen_callback(self,msg):
         # get the ranges from the laserscanner
@@ -52,13 +54,19 @@ class laser_listener():
         expanded_left_scan = self.expand_scan(left_scan, self.factor, self.left_angle_min, self.angle_max)
 
         #rospy.loginfo("Expanded Left Scan (%d): %s\n", len(expanded_left_scan), expanded_left_scan)
+        expanded_msg = msg
 
         # concatenate the expanded scans
-        expanded_scan = np.concatenate((expanded_right_scan, expanded_rigth_void, expanded_center_scan, expanded_left_void, expanded_left_scan))
+        if self.use_center:
+            expanded_scan = expanded_center_scan
+            expanded_msg.angle_min = self.center_angle_min
+            expanded_msg.angle_max = self.center_angle_max
+        else:
+            expanded_scan = np.concatenate((expanded_right_scan, expanded_rigth_void, expanded_center_scan, expanded_left_void, expanded_left_scan))
         #rospy.loginfo("Expanded Scan (%d): %s\n", len(expanded_scan), expanded_scan)
 
         # re-publish the expanded scan with /naoqi_driver/laser message's header
-        expanded_msg = msg
+        expanded_msg.angle_increment = msg.angle_increment/self.factor
         expanded_msg.ranges = expanded_scan
         self.pub.publish(expanded_msg)
 
@@ -82,7 +90,9 @@ class laser_listener():
         return expanded_scan
 
 if __name__ =='__main__':
-    listener = laser_listener()
+    factor = rospy.get_param("/laser_expander/expand_factor")
+    center = rospy.get_param("/laser_expander/use_center")
+    listener = laser_listener(factor=factor, use_center=center)
     try:
         rospy.spin()
     except KeyboardInterrupt:

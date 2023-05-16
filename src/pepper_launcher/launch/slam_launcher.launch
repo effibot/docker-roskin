@@ -1,4 +1,18 @@
 <launch>
+    <arg name="nao_ip"            default="$(optenv NAO_IP 10.1.1.3)" />
+    <arg name="nao_port"          default="$(optenv NAO_PORT 9559)" />
+    <arg name="namespace"           default="pepper_robot" />
+    <arg name="network_interface"  default="docker0"/>
+
+    <!-- Use CPP node by default for nao_sensors -->
+    <arg name="force_python" default="true" />
+    <include file="$(find pepper_description)/launch/pepper_publisher.launch" />
+
+    <include file="$(find naoqi_driver)/launch/naoqi_driver.launch">
+        <arg name="nao_ip"    value="$(arg nao_ip)" />
+        <arg name="nao_port"  value="$(arg nao_port)" />
+        <arg name="network_interface"  value="$(arg network_interface)" />
+    </include>
 
     <!--<node pkg="slam_example" type="scanLaser.py" name="pepper_lidar"/>
     <node pkg="slam_example" type="poseOdometry.py" name="pepper_odom_derivative"/> -->
@@ -22,13 +36,16 @@
         <param name="output_frame_id" type="str"    value="/base_footprint"/> <!--default: camera_depth_frame. Frame id of the laser scan. -->
 
     </node>
-
+    <arg name='expand_factor' default='10'/>
+    <node name='laser_expander' pkg='pepper_launcher' type='laser_expander.py' output='screen'>
+        <param name='expand_factor' type='int' value='$(arg expand_factor)'/>
+    </node>
     <node pkg="gmapping" type="slam_gmapping" name="gmap" args="" >
-        <remap from="/scan" to="/pepper_robot/laser"/>
+        <!--<remap from="/scan" to="/pepper_robot/laser"/> -->
         <param name="base_frame" value="/base_footprint"/>
         <param name="odom_frame" value="/odom"/>
         <param name="map_frame" value="/map"/>
-        <param name="scan_topic" value="/pepper_robot/laser"/>
+        <param name="scan_topic" value="/laser_expand"/>
         <param name="maxRange" value="8.0"/>
         <param name="sigma" value="0.05"/>
         <param name="kernelSize" value="1"/>
