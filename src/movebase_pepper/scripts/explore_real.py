@@ -15,14 +15,29 @@ import random
 #from movebase_pepper.scripts.exploration_graph import Graph, Node
 class Explore(NaoqiNode):
     def __init__(self):
-        self.global_map = rospy.Subscriber("/move_base/global_costmap/costmap", OccupancyGrid, self.global_map_sub)
-        self.odom = rospy.Subscriber("/pepper/odom", Odometry, self.exploration_sub)
-        self.global_map_obj = None
-        self.frontiers = []
-        self.marker_pub = rospy.Publisher('frontier_markers_array', MarkerArray, queue_size=1)
-        self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
-        self.current_goal = []
-        self.lost_goal = []
+        NaoqiNode.__init__(self, 'naoqi_explore')
+        #self.global_map = rospy.Subscriber("/move_base/global_costmap/costmap", OccupancyGrid, self.global_map_sub)
+        #self.odom = rospy.Subscriber("/pepper_robot/odom", Odometry, self.exploration_sub)
+        #self.global_map_obj = None
+        #self.frontiers = []
+        #self.marker_pub = rospy.Publisher('frontier_markers_array', MarkerArray, queue_size=1)
+        #self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
+        #self.current_goal = []
+        #self.lost_goal = []
+        #self.tts = None
+        #self.motion = None
+        self.connectNaoQi()
+    def connectNaoQi(self):
+        '''Connect to Naoqi modules
+        '''
+        rospy.loginfo("Exploration Node Connecting to NaoQi at %s:%d", self.pip, self.pport)
+
+        self.tts  = self.get_proxy("ALTextToSpeech")
+
+        self.motion = self.get_proxy("ALMotion")
+        if self.motion is not None:
+            if not self.motion.robotIsWakeUp():
+                self.motion.wakeUp()
 
     def is_frontier(self,data, width, height, x, y):
         for dy in range(-1, 2):
@@ -139,9 +154,6 @@ class Explore(NaoqiNode):
             pos = tuple([goal.target_pose.pose.position.x,goal.target_pose.pose.position.y])
             if pos not in self.lost_goal:
                 self.lost_goal.append(pos)
-
-
-
     def select_goal(self, robotpose, frontiers):
         if len(self.lost_goal)>0:
             rospy.loginfo("Lost goal %d",len(self.lost_goal))
@@ -172,14 +184,11 @@ class Explore(NaoqiNode):
             rospy.loginfo("Goal reached!")
         else:
             rospy.loginfo("Goal failed with state: %s", state)
-
     def on_active(self):
         rospy.loginfo("On Active")
     def on_feedback(self,feedback):
         rospy.loginfo("On Feedback")
-        rospy.loginfo(feedback)
-
-
+        #rospy.loginfo(feedback)
     def sendgoal(self,goal_target):
         self.client.wait_for_server()
         goal = MoveBaseGoal()
@@ -194,14 +203,6 @@ class Explore(NaoqiNode):
         self.client.send_goal(goal,done_cb=self.on_done,active_cb=self.on_active,feedback_cb=self.on_feedback)
         self.client.wait_for_result()
         #self.move_base_status(goal)
-    # Sends the goal to the action server.
-        #wait =
-        #if not wait:
-        #    rospy.logerr("Action server not available!")
-        #    rospy.signal_shutdown("Action server not available!")
-        #else:
-        #
-        #    #self.client.wait_for_result()
 
     def exploration_sub(self,odom):
         if self.global_map_obj is not None:
@@ -214,9 +215,18 @@ class Explore(NaoqiNode):
             self.current_goal = goal
             self.sendgoal(self.current_goal)
 
+
+
+    def run(self):
+        self.tts.say("Exploring")
+        while self.is_looping():
+            self.motion.setAngles("HeadPitch", 0.0, 0.1)
+            self.motion.setAngles("HeadYaw", 0.0, 0.1)
+
 if __name__ == '__main__':
     rospy.loginfo("Exploration Node")
-    rospy.init_node('exploration_node')
+    #rospy.init_node('exploration_node')
     exploration_node=Explore()
+    exploration_node.run()
     rospy.spin()
     exit(0)

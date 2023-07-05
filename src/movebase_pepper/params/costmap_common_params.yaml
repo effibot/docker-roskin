@@ -17,11 +17,12 @@ obstacle_layer:
   z_voxels: 10
   footprint_clearing_enabled: true
   publish_voxel_map: true
-  observation_sources:  scan #depth_pcl
+  observation_sources:  scan depth_pcl
   scan:
     #sensor_frame: "base_link"
     data_type: LaserScan
     topic: "/pepper_robot/laser"
+    sensor_frame: "base_footprint"
     marking: true
     clearing: true
     raytrace_max_range: 6.0
@@ -30,24 +31,27 @@ obstacle_layer:
     observation_persistence: 15.0
   depth_pcl:
     data_type: PointCloud2
-    sensor_frame: "base_footprint"
-    topic: "/pepper/camera/depth/points"
+    sensor_frame: "CameraDepth_optical_frame"
+    topic: "/pepper_robot/camera/depth/points"
     marking: true
     clearing: true
     min_obstacle_height: 0.30
-    raytrace_min_range: 0.5
+    raytrace_min_range: 0.4
+    raytrace_max_range: 6.0
+    observation_persistence: 15.0
+    transform_tolerance: 2.0
 
 
 inflation_layer:
   enabled:              true
   cost_scaling_factor:  0.05 #0.5 exponential rate at which the obstacle cost drops off (default: 10)
-  inflation_radius:     0.5  # max. distance from an obstacle at which costs are incurred for planning paths.
+  inflation_radius:     0.32  # max. distance from an obstacle at which costs are incurred for planning paths.
   publish_voxel_map:    true
   inflate_unknown:      false
 
 sonar:
   enabled: true
-  topics: ["/pepper/sonar/back"]
+  topics: ["/pepper_robot/sonar/back"]
 
 
 people:

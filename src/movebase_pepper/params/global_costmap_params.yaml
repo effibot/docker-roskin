@@ -2,10 +2,10 @@ global_costmap:
   global_frame: map
   robot_base_frame: base_footprint
   update_frequency: 4.0
-  publish_frequency: 2.0
+  publish_frequency: 3.0
   transform_tolerance: 30.0
   always_send_full_costmap: true
-  track_unknown_space: true
+  track_unknown_space: false
   rolling_window: false
   initial_pose_x: 0.0
   initial_pose_y: 0.0

@@ -1,7 +1,7 @@
 <launch>
 <arg name="imu_ignore_acc"          default="true" />
 <arg name="imu_remove_gravitational_acceleration" default="true" />
-<arg name="frame_id"                default="base_footprint" />
+<arg name="frame_id"                default="base_link" />
 <arg name="rgb_topic"               default="/pepper_robot/camera/front/image_raw" />
 <arg name="depth_topic"             default="/pepper_robot/camera/depth/image" />
 <arg name="camera_info_topic"       default="/pepper_robot/camera/front/camera_info" />
@@ -36,7 +36,7 @@
     <param name="Grid/3D" value="true"/>
     <param name="Grid/Sensor" value="2"/>
     <param name="Grid/RayTracing" value="true"/>
-    <param name="Grid/RangeMax" value="3"/>
+    <param name="Grid/RangeMax" value="3.0"/>
     <param name="Grid/Scan2dUnknownSpaceFilled" value="true"/>
     <param name="GridGlobal/Eroded" value="false"/>
     <param name="GridGlobal/FootprintRadius" value="0.3"/>
