@@ -18,4 +18,5 @@
         <param name="output_frame_id" type="str"    value="/base_link"/> <!--default: camera_depth_frame. Frame id of the laser scan. -->
 
     </node>
+
 </launch>

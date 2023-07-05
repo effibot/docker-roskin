@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-
-  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <arg name="gazebo" default="true"/>
   <rosparam file="$(find pepper_control)/config/pepper_trajectory_control.yaml" command="load"/>
 
+  <group unless="$(arg gazebo)">
   <!-- load the controllers -->
   <node name="pepper_trajectory_controller" pkg="controller_manager" type="spawner" respawn="true"
     output="screen" args="
@@ -17,4 +17,15 @@
       /pepper_dcm/WheelFR_controller
       /pepper_dcm/WheelB_controller
       /pepper_dcm/joint_state_controller "/>
+  </group>
+
+  <group if="$(arg gazebo)">
+    <node name="pepper_trajectory_controller" pkg="controller_manager" type="spawner" respawn="true"
+    output="screen" args="
+      /pepper/RightArm_controller
+      /pepper/LeftArm_controller
+      /pepper/Head_controller
+      /pepper/Pelvis_controller
+      /pepper/joint_state_controller "/>
+  </group>
 </launch>

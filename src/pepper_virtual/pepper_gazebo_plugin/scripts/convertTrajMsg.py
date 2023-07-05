@@ -32,7 +32,7 @@ parser.add_argument('-i','--input', default=None, help='file containing the traj
 args = parser.parse_args()
 if os.path.isfile(args.input):
     output = args.input[0:args.input.rfind('.')] + '_modified' + args.input[args.input.rfind('.'):]
-    print(output)
+    print output
     file = open(args.input,'r')
     lines = file.readlines()
     outfile = open(output,'w+')
@@ -41,5 +41,5 @@ if os.path.isfile(args.input):
     file.close()
     outfile.close()
 else:
-    print("input file doesn't exist")
+    print "input file doesn't exist"
 

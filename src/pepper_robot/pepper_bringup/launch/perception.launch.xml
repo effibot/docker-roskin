@@ -6,7 +6,7 @@
   <arg name="launch_manager" default="true" />
   <arg name="manager" default="camera_nodelet_manager" />
   <arg name="debug" default="false" />
-  <arg name="num_worker_threads" default="8" />
+  <arg name="num_worker_threads" default="5" />
 
   <arg name="depth_registration" default="true" />
   <arg name="depth_registered" default="depth_registered" />
@@ -17,7 +17,7 @@
   <arg name="points_xyz" value="false" if="$(arg depth_registration)" />
   <arg name="points_xyz" value="true"  unless="$(arg depth_registration)" />
 
-  <group ns="$(arg namespace)/camera/">
+  <group ns="$(arg namespace)/camera">
 
     <!-- manager -->
     <include file="$(find rgbd_launch)/launch/includes/manager.launch.xml">

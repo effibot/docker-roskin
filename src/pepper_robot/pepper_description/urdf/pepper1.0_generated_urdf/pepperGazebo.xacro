@@ -44,11 +44,11 @@
         </plugin>
         <plugin name="${side}Thumb2_link" filename="libroboticsgroup_gazebo_disable_link_plugin.so">
             <link>${side}Thumb2_link</link>
-        </plugin> 
+        </plugin>
         <plugin name="${side_small}_gripper" filename="libroboticsgroup_gazebo_disable_link_plugin.so">
             <link>${side_small}_gripper</link>
         </plugin>
-    </xacro:macro> 
+    </xacro:macro>
     <!-- MACROS FOR MIMIC JOINTS -->
     <!-- Fingers -->
     <xacro:macro name="FingerMimics" params="side num">
@@ -70,7 +70,7 @@
             <multiplier>-${PI/4}</multiplier>
             <offset>${PI/4}</offset>
         </plugin>
-    </xacro:macro> 
+    </xacro:macro>
     <!-- Thumbs -->
     <xacro:macro name="ThumbMimics" params="side">
         <plugin name="${side}Thumb1" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
@@ -109,7 +109,7 @@
         <xacro:ThumbMimics side="R"/>
 
         <xacro:DisabledLinks side="L" side_small="l"/>
-        <xacro:DisabledLinks side="R" side_small="r"/> 
+        <xacro:DisabledLinks side="R" side_small="r"/>
     </gazebo>
     <!-- END OF GAZEBO ROS CONTROL PLUGIN -->
     <!-- GAZEBO MATERIALS -->
@@ -145,7 +145,7 @@
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
         <turnGravityOff>false</turnGravityOff>
-    </gazebo> 
+    </gazebo>
 
 
 <!-- ARMS -->
@@ -172,7 +172,7 @@
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
         <turnGravityOff>false</turnGravityOff>
-    </gazebo> 
+    </gazebo>
     <gazebo reference="l_wrist">
         <mu1>0.5</mu1>
         <mu2>0.5</mu2>
@@ -209,7 +209,7 @@
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
         <turnGravityOff>false</turnGravityOff>
-    </gazebo> 
+    </gazebo>
     <gazebo reference="r_wrist">
         <mu1>0.5</mu1>
         <mu2>0.5</mu2>
@@ -308,7 +308,7 @@
         <mu2>0.5</mu2>
         <selfCollide>false</selfCollide>
         <turnGravityOff>true</turnGravityOff>
-    </gazebo> 
+    </gazebo>
 
     <gazebo reference="Hip">
         <mu1>0.5</mu1>
@@ -559,7 +559,7 @@
     </gazebo>
 
 
-<!-- 
+<!--
     BUMPERS
 
 <gazebo reference="BumperB_frame">
@@ -639,103 +639,107 @@
 -->
 
 <gazebo reference="SonarBack_frame">
-  <sensor type="ray" name="SonarBack">
-    <pose>0 0 0 0 0 0</pose>
-    <update_rate>20</update_rate>
-    <visualize>false</visualize>
-    <ray>
-      <scan>
-        <horizontal>
-          <samples>5</samples>
-          <resolution>3</resolution>
-          <min_angle>-0.52</min_angle>
-          <max_angle>0.52</max_angle>
-        </horizontal>
-        <vertical>
-          <samples>5</samples>
-          <resolution>3</resolution>
-          <min_angle>-0.52</min_angle>
-          <max_angle>0.52</max_angle>
-        </vertical>
-      </scan>
-      <range>
-        <min>0.0</min>
-        <max>5.0</max>
+<sensor type="ray" name="SonarBack">
+<pose>0 0 0 0 0 0</pose>
+<update_rate>20</update_rate>
+<visualize>false</visualize>
+<ray>
+    <scan>
+    <horizontal>
+        <samples>5</samples>
         <resolution>3</resolution>
-      </range>
-    </ray>
-    <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
-      <robotNamespace>/pepper_robot</robotNamespace>
-      <gaussianNoise>0.05</gaussianNoise>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
-      <topicName>sonar_back</topicName>
-      <frameName>SonarBack_frame</frameName>
-      <minRange>0.0</minRange>
-      <maxRange>5.0</maxRange>
-      <fov>1.05</fov>
-      <radiation>ultrasound</radiation>
-    </plugin>
-  </sensor>
+        <min_angle>-0.52</min_angle>
+        <max_angle>0.52</max_angle>
+    </horizontal>
+    <vertical>
+        <samples>5</samples>
+        <resolution>3</resolution>
+        <min_angle>-0.52</min_angle>
+        <max_angle>0.52</max_angle>
+    </vertical>
+    </scan>
+    <range>
+    <min>0.0</min>
+    <max>5.0</max>
+    <resolution>3</resolution>
+    </range>
+</ray>
+<plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+    <robotNamespace>/pepper_robot</robotNamespace>
+    <gaussianNoise>0.05</gaussianNoise>
+    <alwaysOn>true</alwaysOn>
+    <updateRate>20</updateRate>
+    <topicName>sonar_back</topicName>
+    <frameName>SonarBack_frame</frameName>
+    <minRange>0.0</minRange>
+    <maxRange>5.0</maxRange>
+    <fov>1.05</fov>
+    <radiation>ultrasound</radiation>
+</plugin>
+</sensor>
 </gazebo>
 
 <gazebo reference="SonarFront_frame">
-  <sensor type="ray" name="SonarFront">
-    <pose>0 0 0 0 0 0</pose>
-    <update_rate>20</update_rate>
-    <visualize>false</visualize>
-    <ray>
-      <scan>
-        <horizontal>
-          <samples>5</samples>
-          <resolution>3</resolution>
-          <min_angle>-0.52</min_angle>
-          <max_angle>0.52</max_angle>
-        </horizontal>
-        <vertical>
-          <samples>5</samples>
-          <resolution>3</resolution>
-          <min_angle>-0.52</min_angle>
-          <max_angle>0.52</max_angle>
-        </vertical>
-      </scan>
-      <range>
-        <min>0.0</min>
-        <max>5.0</max>
+<sensor type="ray" name="SonarFront">
+<pose>0 0 0 0 0 0</pose>
+<update_rate>20</update_rate>
+<visualize>false</visualize>
+<ray>
+    <scan>
+    <horizontal>
+        <samples>5</samples>
         <resolution>3</resolution>
-      </range>
-    </ray>
-    <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
-      <robotNamespace>/pepper_robot</robotNamespace>
-      <gaussianNoise>0.05</gaussianNoise>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
-      <topicName>sonar_front</topicName>
-      <frameName>SonarFront_frame</frameName>
-      <minRange>0.0</minRange>
-      <maxRange>5.0</maxRange>
-      <fov>1.05</fov>
-      <radiation>ultrasound</radiation>
-    </plugin>
-  </sensor>
+        <min_angle>-0.52</min_angle>
+        <max_angle>0.52</max_angle>
+    </horizontal>
+    <vertical>
+        <samples>5</samples>
+        <resolution>3</resolution>
+        <min_angle>-0.52</min_angle>
+        <max_angle>0.52</max_angle>
+    </vertical>
+    </scan>
+    <range>
+    <min>0.0</min>
+    <max>5.0</max>
+    <resolution>3</resolution>
+    </range>
+</ray>
+<plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+    <robotNamespace>/pepper_robot</robotNamespace>
+    <gaussianNoise>0.05</gaussianNoise>
+    <alwaysOn>true</alwaysOn>
+    <updateRate>20</updateRate>
+    <topicName>sonar_front</topicName>
+    <frameName>SonarFront_frame</frameName>
+    <minRange>0.0</minRange>
+    <maxRange>5.0</maxRange>
+    <fov>1.05</fov>
+    <radiation>ultrasound</radiation>
+</plugin>
+</sensor>
 </gazebo>
 
 <!-- Drive controller -->
 <gazebo>
-  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-    <alwaysOn>true</alwaysOn>
-    <updateRate>100</updateRate>
-    <robotNamespace>/</robotNamespace>
-    <leftJoint>WheelFL</leftJoint>
-    <rightJoint>WheelFR</rightJoint>
-    <wheelSeparation>0.170</wheelSeparation>
-    <wheelDiameter>0.140</wheelDiameter>
-    <torque>36.9</torque>
-    <commandTopic>cmd_vel</commandTopic>
-    <odometryTopic>odom_diffdrive</odometryTopic>
-    <odometryFrame>odom</odometryFrame>
-    <robotBaseFrame>base_footprint</robotBaseFrame>
-  </plugin>
+<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+<alwaysOn>true</alwaysOn>
+<publishTf>1</publishTf>
+<updateRate>100</updateRate>
+<robotNamespace>/</robotNamespace>
+<leftJoint>WheelFL</leftJoint>
+<rightJoint>WheelFR</rightJoint>
+<publishWheelTF>true</publishWheelTF>
+<publishWheelJointState>true</publishWheelJointState>
+<publishOdomTF>true</publishOdomTF>
+<wheelSeparation>0.170</wheelSeparation>
+<wheelDiameter>0.140</wheelDiameter>
+<torque>36.9</torque>
+<commandTopic>cmd_vel</commandTopic>
+<odometryTopic>odom_diffdrive</odometryTopic>
+<odometrySource>encoder</odometrySource>
+<odometryFrame>odom</odometryFrame>
+<robotBaseFrame>base_footprint</robotBaseFrame>
+</plugin>
 </gazebo>
 </robot>
-

@@ -4,10 +4,10 @@
   <arg name="nao_port"            default="$(optenv NAO_PORT 9559)" />
 
   <arg name="roscore_ip"          default="127.0.0.1" />
-  <arg name="network_interface"   default="eth0" />
+  <arg name="network_interface"   default="docker0" />
 
   <arg name="namespace"           default="$(optenv ROS_NAMESPACE pepper_robot)" />
-
+  <arg name="rviz"                default="true" />
   <!-- naoqi driver -->
   <include file="$(find naoqi_driver)/launch/naoqi_driver.launch">
     <arg name="nao_ip"            value="$(arg nao_ip)" />
@@ -27,5 +27,11 @@
   <include file="$(find pepper_bringup)/launch/perception.launch.xml">
     <arg name="namespace"         value="$(arg namespace)" />
   </include>
+
+  <!-- launch move base -->
+  <include file="$(find movebase_pepper)/launch/rtabmap.launch">
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/dock/workspace/src/pepper_robot/pepper_description/config/urdf.rviz" required="$(arg rviz)" />
 
 </launch>

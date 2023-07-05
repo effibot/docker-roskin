@@ -1,24 +1,36 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="gazebo" default="true"/>
   <arg name="launch_control_trajectory_all" default="true"/>
+  <env name="GAZEBO_MODEL_PATH" value="$(find pepper_gazebo_plugin)/models:$(optenv GAZEBO_MODEL_PATH)"/>
   <!-- Load the URDF Model -->
-  <include file="$(find pepper_description)/launch/pepper_upload.launch" />  
+  <include file="$(find pepper_description)/launch/pepper_upload_gaz.launch"/>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find pepper_gazebo_plugin)/worlds/naoFoot.world"/>
-    <arg name="paused" value="true"/>
+    <arg name="world_name" value="$(find pepper_gazebo_plugin)/worlds/simple_office_with_people.world"/>
+    <arg name="paused" value="false"/>
   </include>
-
 
   <!-- Call Pepper Robot Trajectory Controller -->
 
-  <include file="$(find pepper_control)/launch/pepper_control_trajectory.launch" unless="$(arg launch_control_trajectory_all)"/>
-  <include file="$(find pepper_control)/launch/pepper_control_trajectory_all.launch" if="$(arg launch_control_trajectory_all)"/>
+  <include file="$(find pepper_control)/launch/pepper_control_trajectory.launch" unless="$(arg launch_control_trajectory_all)">
+    <arg name="gazebo" value="$(arg gazebo)"/>
+  </include>
+  <include file="$(find pepper_control)/launch/pepper_control_trajectory_all.launch" if="$(arg launch_control_trajectory_all)" >
+    <arg name="gazebo" value="$(arg gazebo)"/>
+  </include>
 <!--
   <include file="$(find pepper_control)/launch/pepper_control_position.launch"/>
 -->
-  <!-- Spawn a robot into Gazebo -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <!--<node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_odom" args="X Y Z R P Y odom base_footprint" />-->
+  <!--     Spawn a robot into Gazebo -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-    args="-param robot_description -urdf -x -0.5 -y 1 -z 0.88 -model pepper_MP" />
+    args="-param robot_description -urdf -x -0.5 -y 1 -z 0.05 -model pepper_MP" />
 
+
+  <node name="laser_fake_laser" pkg="pepper_gazebo_plugin" type="laserpublisher.py"/>
+
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/dock/workspace/src/pepper_robot/pepper_description/config/urdf.rviz" />
 </launch>

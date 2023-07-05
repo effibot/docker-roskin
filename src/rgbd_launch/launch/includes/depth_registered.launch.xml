@@ -4,7 +4,7 @@
 
   <arg name="manager" />
 
-  <arg name="queue_size" default="5" />
+  <arg name="queue_size" default="10" />
   <arg name="respawn" default="false" />
   <arg     if="$(arg respawn)" name="bond" value="" />
   <arg unless="$(arg respawn)" name="bond" value="--no-bond" />

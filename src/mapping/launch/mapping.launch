@@ -1,0 +1,55 @@
+<launch>
+<arg name="imu_ignore_acc"          default="true" />
+<arg name="imu_remove_gravitational_acceleration" default="true" />
+<arg name="frame_id"                default="base_footprint" />
+<arg name="rgb_topic"   default="/pepper_robot/camera/front/image_raw"/>
+<arg name="depth_topic" default="/pepper_robot/camera/depth/image_raw" />
+<arg name="camera_info_topic" default="/pepper_robot/camera/depth/camera_info"/>
+<arg name="scan_topic"     default="/pepper_robot/laser"/>
+<arg name="odom_frame_id"   default="odom"/>
+<arg name="base_frame_id"   default="base_footprint"/>
+<arg name="global_frame_id" default="odom"/>
+<arg name="odom_topic" default="/pepper_robot/odom" />
+<arg name="laser_topic" default="/pepper_robot/laser" />
+<arg name="map_topic"  default="/rtabmap/grid_map"/>
+<group ns="rtabmap">
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" args="--delete_db_on_start">
+        <param name="frame_id"               type="string" value="$(arg frame_id)"/>
+        <param name="database_path" type="string" value="/home/dock/workspace/src/database/rtabmap.db"/>
+        <param name="approx_sync" value="true"/>
+        <param name="subscribe_depth" type="bool" value="true"/>
+        <param name="subscribe_rgbd" type="bool" value="false"/>
+        <param name="subscribe_scan" type="bool" value="true"/>
+        <remap from="rgb/image"       to="$(arg rgb_topic)"/>
+        <remap from="depth/image"     to="$(arg depth_topic)"/>
+        <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
+        <remap from="odom" to="/pepper_robot/odom"/>
+        <remap from="scan" to="/pepper_robot/laser"/>
+        <param name="map_always_update" type="bool" value="false"/>
+        <param name="RGBD/NeighborLinkRefining" type="string" value="true"/>
+        <param name="RGBD/ProximityBySpace"     type="string" value="true"/>
+        <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
+        <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
+        <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+        <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="15"/>
+        <param name="GMS/WithRotation"  value="true"/>
+        <param name="queue_size" type="int" value="10"/>
+        <param name="Grid/3D" value="true"/>
+        <param name="Grid/Sensor" value="2"/>
+        <param name="Grid/RayTracing" value="true"/>
+        <param name="Grid/RangeMax" value="3"/>
+        <param name="Grid/Scan2dUnknownSpaceFilled" value="true"/>
+        <param name="GridGlobal/Eroded" value="false"/>
+        <param name="GridGlobal/FootprintRadius" value="0.3"/>
+        <param name="GridGlobal/Resolution" value="0.05"/>
+        <param name="Grid/MaxGroundHeight" type="string" value="0.3"/>
+        <param name="Icp/VoxelSize" value="0.05"/>
+        <param name="Icp/MaxCorrespondenceDistance" value="0.1"/>
+        <param name="Icp/Force4DoF"  value="true"/>
+        <param name="Vis/MaxDepth" value="7.0"/>
+        <param name="Vis/MinDepth" value="0.0"/>
+        <param name="Reg/Force3DoF" value="true" />
+        <param name="Reg/Strategy"  value="2"/>
+    </node>
+</group>
+</launch>

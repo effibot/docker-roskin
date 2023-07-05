@@ -152,7 +152,7 @@ class NaoqiLaser(NaoqiNode):
         self.laserProxy = self.get_proxy("ALLaser")
         self.memProxy = self.get_proxy("ALMemory")
         if self.laserProxy is None or self.memProxy is None:
-            print("could not start either laser or memory proxy")
+            print "could not start either laser or memory proxy"
             exit(1)
 
     # fetch laser values
