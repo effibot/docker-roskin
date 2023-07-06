@@ -1,13 +1,13 @@
 DWAPlannerROS:
 # Robot Configuration Parameters - Kobuki
-  max_vel_x: 0.5  # 0.55 #0.5
+  max_vel_x: 0.8  # 0.55 #0.5
   min_vel_x: 0
 
   max_vel_y: 0  # diff drive robot
   min_vel_y: 0  # diff drive robot
 
   max_vel_trans: 0.25 #0.25 choose slightly less than the base's capability #0.5
-  min_vel_trans: 0.  # this is the min trans velocity when there is negligible rotational velocity
+  min_vel_trans: 0. # this is the min trans velocity when there is negligible rotational velocity
   trans_stopped_vel: 0.1
 
   # Warning!
@@ -24,19 +24,20 @@ DWAPlannerROS:
 
 # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.3 # 0.05
-  xy_goal_tolerance: 0.30  # 0.10
-  latch_xy_goal_tolerance: true
+  xy_goal_tolerance: 0.10  # 0.10
+  latch_xy_goal_tolerance: false
 
 # Forward Simulation Parameters
-  sim_time: 1.2      # 1.7
+  sim_time: 5.0     # 1.7
   vx_samples: 30       # 3
   vy_samples: 30       # diff drive robot, there is only one sample
   vtheta_samples: 20  # 20
+  sim_granularity: 0.05
 
 # Trajectory Scoring Parameters
   path_distance_bias: 100.0 #1     # 32.0 64.0  - weighting for how much it should stick to the global path plan
-  goal_distance_bias: 24.0  #10    # 24.0   - wighting for how much it should attempt to reach its goal
-  occdist_scale: 10000          #0.5  # 0.01   - weighting for how much the controller should avoid obstacles
+  goal_distance_bias: 10.0  #10    # 24.0   - wighting for how much it should attempt to reach its goal
+  occdist_scale: 100          #0.5  # 0.01   - weighting for how much the controller should avoid obstacles
   forward_point_distance: 0.325 # 0.325  - how far along to place an additional scoring point
   stop_time_buffer: 0.3         # 0.2    - amount of time a robot must stop in before colliding for a valid traj.
   scaling_speed: 0.25

@@ -1,7 +1,7 @@
 <launch>
 <arg name="imu_ignore_acc"          default="true" />
 <arg name="imu_remove_gravitational_acceleration" default="true" />
-<arg name="frame_id"                default="base_link" />
+<arg name="frame_id"                default="base_footprint" />
 <arg name="rgb_topic"               default="/pepper_robot/camera/front/image_raw" />
 <arg name="depth_topic"             default="/pepper_robot/camera/depth/image" />
 <arg name="camera_info_topic"       default="/pepper_robot/camera/front/camera_info" />
@@ -58,7 +58,9 @@
 </group>
 
 <!--- Run AMCL
-<include file="$(find movebase_pepper)/launch/amcl.launch">-->
-<include file="$(find movebase_pepper)/launch/move_base_rtab.launch"/>
+<include file="$(find movebase_pepper)/launch/amcl.launch"/>-->
+<include file="$(find movebase_pepper)/launch/move_base_rtab.launch">
+    <arg name="global_frame_id" value="map"/>
+</include>
 
 </launch>

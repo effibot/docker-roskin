@@ -16,16 +16,18 @@ import random
 class Explore(NaoqiNode):
     def __init__(self):
         NaoqiNode.__init__(self, 'naoqi_explore')
-        #self.global_map = rospy.Subscriber("/move_base/global_costmap/costmap", OccupancyGrid, self.global_map_sub)
-        #self.odom = rospy.Subscriber("/pepper_robot/odom", Odometry, self.exploration_sub)
-        #self.global_map_obj = None
-        #self.frontiers = []
-        #self.marker_pub = rospy.Publisher('frontier_markers_array', MarkerArray, queue_size=1)
-        #self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
-        #self.current_goal = []
-        #self.lost_goal = []
-        #self.tts = None
-        #self.motion = None
+        self.global_map = rospy.Subscriber("/move_base/global_costmap/costmap", OccupancyGrid, self.global_map_sub)
+        self.odom = rospy.Subscriber("/pepper_robot/odom", Odometry, self.exploration_sub)
+        self.global_map_obj = None
+        self.frontiers = []
+        self.marker_pub = rospy.Publisher('frontier_markers_array', MarkerArray, queue_size=1)
+        self.client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
+        self.current_goal = []
+        self.lost_goal = []
+        self.tts = None
+        self.motion = None
+        self.marker_frontiers = MarkerArray()
+        self.marker_frontiers.markers = []
         self.connectNaoQi()
     def connectNaoQi(self):
         '''Connect to Naoqi modules
@@ -38,6 +40,7 @@ class Explore(NaoqiNode):
         if self.motion is not None:
             if not self.motion.robotIsWakeUp():
                 self.motion.wakeUp()
+        self.posture = self.get_proxy("ALRobotPosture")
 
     def is_frontier(self,data, width, height, x, y):
         for dy in range(-1, 2):
@@ -80,7 +83,7 @@ class Explore(NaoqiNode):
             marker_msg.ns = "frontiers"
             marker_msg.id = i
             marker_msg.type = Marker.SPHERE
-            marker_msg.action = 0
+            marker_msg.action = Marker.ADD
             marker_msg.pose.orientation.w = 1.0
             marker_msg.scale.x = scale_x
             marker_msg.scale.y = scale_y
@@ -96,7 +99,7 @@ class Explore(NaoqiNode):
             marker_msg.pose.orientation.y = 0.0
             marker_msg.pose.orientation.z = 0.0
             marker_msg.pose.orientation.w = 1.0
-            if self.current_goal is not None:
+            if self.current_goal != []:
                 if frontier[0] == self.current_goal[0] and frontier[1] == self.current_goal[1]:
                     marker_msg.color.r = 0.0
                     marker_msg.color.g = 1.0
@@ -106,6 +109,7 @@ class Explore(NaoqiNode):
                     marker_msg.scale.z = 0.2
             marker_array_msg.markers.append(marker_msg)
             i+=1
+        self.marker_frontiers = marker_array_msg
         self.marker_pub.publish(marker_array_msg)
 
     def update_frontiers(self, global_costmap_message):
@@ -169,26 +173,59 @@ class Explore(NaoqiNode):
         # Retrieve indexes of the maximum distance        rospy.loginfo("Goal selected")
         max_distance_indexes = np.argwhere(calculated_distance > (np.amax(calculated_distance)-0.5))
         # Select the farthest frontier        rospy.loginfo("Retrieving the max")
-        pos = None
-        rospy.loginfo("Number of candidates %d",len(max_distance_indexes))
-        while pos is None:
-            pos = frontiers[max_distance_indexes[0][0]]
-            rospy.loginfo("Goal selected")
-            angle = math.atan2(pos[1] - robotpose[1], pos[0] - robotpose[0])
-            z = math.sin(angle / 2.0)
-            w = math.cos(angle / 2.0)
-            return [pos[0], pos[1], z,w]
+        rospy.loginfo(max_distance_indexes)
+        if len(max_distance_indexes)>0:
+            pos = None
+            rospy.loginfo("Number of candidates %d",len(max_distance_indexes))
+            while pos is None:
+                pos = frontiers[max_distance_indexes[0][0]]
+                rospy.loginfo("Goal selected")
+                angle = math.atan2(pos[1] - robotpose[1], pos[0] - robotpose[0])
+                z = math.sin(angle / 2.0)
+                w = math.cos(angle / 2.0)
+                return [pos[0], pos[1], z,w]
         return [self.current_goal[0], self.current_goal[1], self.current_goal[2], self.current_goal[3]]
     def on_done(self,state,data):
         if state == actionlib.GoalStatus.SUCCEEDED:
             rospy.loginfo("Goal reached!")
         else:
             rospy.loginfo("Goal failed with state: %s", state)
+            pos = tuple([self.current_goal[0],self.current_goal[1]])
+            if pos not in self.lost_goal:
+                self.lost_goal.append(pos)
     def on_active(self):
         rospy.loginfo("On Active")
     def on_feedback(self,feedback):
-        rospy.loginfo("On Feedback")
-        #rospy.loginfo(feedback)
+        if self.global_map_obj is None:
+            return False
+        width = self.global_map_obj.info.width
+        height = self.global_map_obj.info.height
+        resolution = self.global_map_obj.info.resolution
+        data = self.global_map_obj.data
+
+        x = self.current_goal[0]
+        y = self.current_goal[1]
+
+        # Convert goal position to grid cell indices
+        goal_x = int((x - self.global_map_obj.info.origin.position.x) / resolution)
+        goal_y = int((y - self.global_map_obj.info.origin.position.y) / resolution)
+
+        # Check if the goal indices are within the map bounds
+        if goal_x < 0 or goal_x >= width or goal_y < 0 or goal_y >= height:
+            return True  # Goal position is outside the map
+
+        # Get the occupancy value at the goal indices
+        index = goal_y * width + goal_x
+        occupancy_value = data[index]
+
+        # Check if the occupancy value indicates an occupied cell
+        rospy.loginfo("The goal occupancy value is %d", occupancy_value)
+        if occupancy_value >0:
+            self.client.cancel_goal()
+            pos = tuple([self.current_goal[0],self.current_goal[1]])
+            if pos not in self.lost_goal:
+                self.lost_goal.append(pos)
+
     def sendgoal(self,goal_target):
         self.client.wait_for_server()
         goal = MoveBaseGoal()
@@ -201,9 +238,20 @@ class Explore(NaoqiNode):
         goal.target_pose.pose.orientation.w = goal_target[3]
         rospy.loginfo("Sending the goal")
         self.client.send_goal(goal,done_cb=self.on_done,active_cb=self.on_active,feedback_cb=self.on_feedback)
-        self.client.wait_for_result()
-        #self.move_base_status(goal)
-
+        self.client.wait_for_result(rospy.Duration(secs= 0, nsecs=1000))
+        # Check if the goal was successful
+        if self.client.get_state() == actionlib.GoalStatus.SUCCEEDED:
+            print("Goal reached successfully!")
+        else:
+            # Check if the goal failed due to "Failed to get a path"
+            if self.client.get_state() == actionlib.GoalStatus.ABORTED:
+                result_text = self.client.get_goal_status_text()
+                if "Failed to get a path" in result_text:
+                    print("Goal aborted due to failure in path planning.")
+                else:
+                    print("Goal aborted for a different reason.")
+            else:
+                print(self.client.get_state())
     def exploration_sub(self,odom):
         if self.global_map_obj is not None:
             robotpose = [odom.pose.pose.position.x, odom.pose.pose.position.y]
@@ -218,10 +266,13 @@ class Explore(NaoqiNode):
 
 
     def run(self):
-        self.tts.say("Exploring")
+        #self.tts.say("Onii chan, I am ready to explore")
+        self.posture.goToPosture("StandInit", 0.2)
+
         while self.is_looping():
             self.motion.setAngles("HeadPitch", 0.0, 0.1)
             self.motion.setAngles("HeadYaw", 0.0, 0.1)
+            # self.motion set stand up positon
 
 if __name__ == '__main__':
     rospy.loginfo("Exploration Node")

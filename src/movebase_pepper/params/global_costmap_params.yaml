@@ -1,16 +1,18 @@
 global_costmap:
   global_frame: map
   robot_base_frame: base_footprint
-  update_frequency: 4.0
-  publish_frequency: 3.0
+  update_frequency: 5.0
+  publish_frequency: 2.0
   transform_tolerance: 30.0
-  always_send_full_costmap: true
-  track_unknown_space: false
   rolling_window: false
   initial_pose_x: 0.0
   initial_pose_y: 0.0
   initial_pose_a: 0.0
-
+  width: 50.0
+  height: 50.0
+  origin_x: -25.0
+  origin_y: -25.0
+  track_unknown_space: false
   plugins:
     - {name: static_layer,            type: "costmap_2d::StaticLayer"}
     - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}

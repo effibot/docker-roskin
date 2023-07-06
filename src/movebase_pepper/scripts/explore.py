@@ -4,7 +4,7 @@ import rospy
 import qi
 from naoqi_driver.naoqi_node import NaoqiNode
 from nav_msgs.msg import OccupancyGrid
-from nav_msgs.msg import Odometry
+from nav_msgs.msg import Odometry, Path
 import numpy as np
 from visualization_msgs.msg import Marker, MarkerArray
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -140,8 +140,6 @@ class Explore(NaoqiNode):
             if pos not in self.lost_goal:
                 self.lost_goal.append(pos)
 
-
-
     def select_goal(self, robotpose, frontiers):
         if len(self.lost_goal)>0:
             rospy.loginfo("Lost goal %d",len(self.lost_goal))
@@ -192,16 +190,21 @@ class Explore(NaoqiNode):
         goal.target_pose.pose.orientation.w = goal_target[3]
         rospy.loginfo("Sending the goal")
         self.client.send_goal(goal,done_cb=self.on_done,active_cb=self.on_active,feedback_cb=self.on_feedback)
-        self.client.wait_for_result()
-        #self.move_base_status(goal)
-    # Sends the goal to the action server.
-        #wait =
-        #if not wait:
-        #    rospy.logerr("Action server not available!")
-        #    rospy.signal_shutdown("Action server not available!")
-        #else:
-        #
-        #    #self.client.wait_for_result()
+        self.client.wait_for_result(rospy.Duration(1))
+        # Check if the goal was successful
+        if self.client.get_state() == actionlib.GoalStatus.SUCCEEDED:
+            print("Goal reached successfully!")
+        else:
+            # Check if the goal failed due to "Failed to get a path"
+            if self.client.get_state() == actionlib.GoalStatus.ABORTED:
+                result_text = self.client.get_goal_status_text()
+                if "Failed to get a path" in result_text:
+                    print("Goal aborted due to failure in path planning.")
+                else:
+                    print("Goal aborted for a different reason.")
+            else:
+                print("Goal failed for a different reason.")
+
 
     def exploration_sub(self,odom):
         if self.global_map_obj is not None:
