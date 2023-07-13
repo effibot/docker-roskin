@@ -28,7 +28,7 @@ def rotateHead(motion_service):
         ###############################
         # Set to "look down" position #
         ###############################
-        amntY = 1
+        amntY = 0.5
         amntX = 0
 
         pFractionMaxSpeed = 0.2

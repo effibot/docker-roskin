@@ -1,0 +1,10 @@
+Header header
+float64 x
+float64 y
+int64 id
+int64 size
+float64[] blob
+float64[2] centroid
+int64 visit_counter
+bool is_free
+bool reachable

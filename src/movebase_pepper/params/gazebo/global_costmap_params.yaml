@@ -12,7 +12,8 @@ global_costmap:
   height: 50.0
   origin_x: -25.0
   origin_y: -25.0
-  track_unknown_space: true
+  #track_unknown_space: true
+  always_send_full_costmap: false
   plugins:
     - {name: static_layer,            type: "costmap_2d::StaticLayer"}
     - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}

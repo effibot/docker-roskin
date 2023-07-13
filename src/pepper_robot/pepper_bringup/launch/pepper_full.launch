@@ -32,8 +32,9 @@
   <include file="$(find movebase_pepper)/launch/rtabmap.launch">
   </include>
 
-  <!--<node pkg="movebase_pepper" type="explore_real.py" name="explore_real" args="pip=$(arg nao_ip) pport=$(arg nao_port)" output="screen"/>-->
-
+  <!--<node pkg="movebase_pepper" type="explore_real.py" name="explore_real" args="pip=$(arg nao_ip) pport=$(arg nao_port)" output="screen"/>
+  <include file="$(find movebase_pepper)/launch/exploration.launch">
+  </include>-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d /home/dock/workspace/src/pepper_robot/pepper_description/config/urdf.rviz" required="$(arg rviz)" />
 
 </launch>

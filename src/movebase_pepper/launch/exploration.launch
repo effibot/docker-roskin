@@ -1,0 +1,22 @@
+<launch>
+<arg name="global_map_topic" default="/move_base/global_costmap/costmap"/>
+<arg name="local_map_topic"  default="/move_base/local_costmap/costmap"/>
+<arg name="radius"  default="0.5"/>
+
+<group ns="explore">
+    <group ns="global_frontiers">
+        <node name="global_frontier_detect" pkg="movebase_pepper" type="frontiers_detection.py">
+            <param name="map_topic" value="$(arg global_map_topic)"/>
+            <param name="radius" value="$(arg radius)"/>
+            <param name="global" value="1"/>
+        </node>
+    </group>
+    <?ignore <group ns="local_frontiers">
+        <node name="local_frontier_detect" pkg="movebase_pepper" type="frontiers_detection.py">
+            <param name="map_topic" value="$(arg local_map_topic)"/>
+            <param name="radius" value="$(arg radius)"/>
+            <param name="global" value="0"/>
+        </node>
+    </group>?>
+</group>
+</launch>
